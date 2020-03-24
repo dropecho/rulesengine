@@ -7,6 +7,7 @@ enum OPERATOR {
 	NEQ;
 }
 
+@:expose
 class ConditionResult {
 	public var condition:Condition;
 	public var matches:Bool;
@@ -19,6 +20,7 @@ class ConditionResult {
 	}
 }
 
+@:expose
 class Condition {
 	public var fact:String = "";
 	public var op:OPERATOR = OPERATOR.EQ;

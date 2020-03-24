@@ -1,5 +1,6 @@
 import Condition;
 
+@expose
 class RuleResult {
 	public var rule:Rule;
 	public var conditionResults:Array<ConditionResult> = new Array<ConditionResult>();
@@ -25,6 +26,7 @@ class RuleResult {
 	}
 }
 
+@:expose
 class Rule {
 	public var conditions:Array<Condition> = new Array<Condition>();
 

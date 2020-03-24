@@ -3,6 +3,15 @@
 #pragma warning disable 109, 114, 219, 429, 168, 162
 public class RuleResult : global::haxe.lang.HxObject {
 	
+	static RuleResult() {
+		{
+			object __temp_odecl1 = new global::haxe.lang.DynamicObject(new int[]{1149080132}, new object[]{null}, new int[]{}, new double[]{});
+			global::RuleResult.__meta__ = new global::haxe.lang.DynamicObject(new int[]{5541879}, new object[]{__temp_odecl1}, new int[]{}, new double[]{});
+		}
+		
+	}
+	
+	
 	public RuleResult(global::haxe.lang.EmptyObject empty) {
 	}
 	
@@ -24,6 +33,8 @@ public class RuleResult : global::haxe.lang.HxObject {
 		
 	}
 	
+	
+	public static object __meta__;
 	
 	public global::Rule rule;
 	
