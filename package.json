@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "haxelib run munit t -coverage",
-    "watch": "npm-watch test"
+    "watch": "npm-watch test",
+    "publish:cs": "git subtree split -P dist/cs -b UPM"
   },
   "watch": {
     "test": {
