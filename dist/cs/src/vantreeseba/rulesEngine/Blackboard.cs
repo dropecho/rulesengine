@@ -24,6 +24,11 @@ namespace vantreeseba.rulesEngine {
 		
 		public global::haxe.ds.StringMap facts;
 		
+		public virtual void @set(string key, object val) {
+			object __temp_expr1 = ((object) (global::haxe.lang.Runtime.callField(((global::haxe.ds.StringMap) (((object) (((global::haxe.IMap) (((object) (this.facts) )) )) )) ), "set", 5741474, new object[]{key, ((object) (val) )})) );
+		}
+		
+		
 		public override object __hx_setField(string field, int hash, object @value, bool handleProperties) {
 			unchecked {
 				switch (hash) {
@@ -48,6 +53,12 @@ namespace vantreeseba.rulesEngine {
 		public override object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties) {
 			unchecked {
 				switch (hash) {
+					case 5741474:
+					{
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(this, "set", 5741474)) );
+					}
+					
+					
 					case 2068341319:
 					{
 						return this.facts;
@@ -61,6 +72,28 @@ namespace vantreeseba.rulesEngine {
 					
 				}
 				
+			}
+		}
+		
+		
+		public override object __hx_invokeField(string field, int hash, object[] dynargs) {
+			unchecked {
+				switch (hash) {
+					case 5741474:
+					{
+						this.@set(global::haxe.lang.Runtime.toString(dynargs[0]), dynargs[1]);
+						break;
+					}
+					
+					
+					default:
+					{
+						return base.__hx_invokeField(field, hash, dynargs);
+					}
+					
+				}
+				
+				return null;
 			}
 		}
 		

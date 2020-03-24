@@ -2211,6 +2211,15 @@ class vantreeseba_rulesEngine_Blackboard {
 	constructor() {
 		this.facts = new haxe_ds_StringMap();
 	}
+	set(key,val) {
+		var _this = this.facts;
+		var value = val;
+		if(__map_reserved[key] != null) {
+			_this.setReserved(key,value);
+		} else {
+			_this.h[key] = value;
+		}
+	}
 }
 $hxClasses["vantreeseba.rulesEngine.Blackboard"] = $hx_exports["vantreeseba"]["rulesEngine"]["Blackboard"] = vantreeseba_rulesEngine_Blackboard;
 vantreeseba_rulesEngine_Blackboard.__name__ = "vantreeseba.rulesEngine.Blackboard";
