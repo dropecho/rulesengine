@@ -1,6 +1,7 @@
 ## JS
 -cp src
--D dce=full
+# -D dce=full
+-D dce=no
 -D js-es=6
 
 # DEFINES / MACROS
@@ -13,12 +14,12 @@
 
 ## C#
 -cp src
--D dce=full
+-D dce=no
 -D dll_import
 -D no-root
 
 # DEFINES / MACROS
---macro addGlobalMetadata('*', '@:nativeGen')
+# --macro addGlobalMetadata('*', '@:nativeGen')
 --macro include('', true, null, ['src'])
 
 # OUTPUT 

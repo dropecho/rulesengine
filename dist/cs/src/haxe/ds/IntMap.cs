@@ -3,41 +3,160 @@ using haxe.root;
 
 #pragma warning disable 109, 114, 219, 429, 168, 162
 namespace haxe.ds {
-	public class StringMap<T> : global::haxe.lang.HxObject, global::haxe.ds.StringMap, global::haxe.IMap<string, T> {
+	public class IntMap<T> : global::haxe.lang.HxObject, global::haxe.ds.IntMap, global::haxe.IMap<int, T> {
 		
-		public StringMap(global::haxe.lang.EmptyObject empty) {
+		static bool __hx_init_called = false;
+		static IntMap() {
+			if(global::haxe.ds.IntMap<object>.__hx_init_called) return;
+			global::haxe.ds.IntMap<object>.__hx_init_called = true;
+			{
+				global::haxe.ds.IntMap<object>.HASH_UPPER = 0.7;
+			}
+			
 		}
 		
 		
-		public StringMap() {
-			global::haxe.ds.StringMap<object>.__hx_ctor_haxe_ds_StringMap<T>(((global::haxe.ds.StringMap<T>) (this) ));
+		public IntMap(global::haxe.lang.EmptyObject empty) {
 		}
 		
 		
-		protected static void __hx_ctor_haxe_ds_StringMap<T_c>(global::haxe.ds.StringMap<T_c> __hx_this) {
+		public IntMap() {
+			global::haxe.ds.IntMap<object>.__hx_ctor_haxe_ds_IntMap<T>(((global::haxe.ds.IntMap<T>) (this) ));
+		}
+		
+		
+		protected static void __hx_ctor_haxe_ds_IntMap<T_c>(global::haxe.ds.IntMap<T_c> __hx_this) {
 			unchecked {
 				__hx_this.cachedIndex = -1;
 			}
 		}
 		
 		
-		public static object __hx_cast<T_c_c>(global::haxe.ds.StringMap me) {
-			return ( (( me != null )) ? (me.haxe_ds_StringMap_cast<T_c_c>()) : default(object) );
+		public static object __hx_cast<T_c_c>(global::haxe.ds.IntMap me) {
+			return ( (( me != null )) ? (me.haxe_ds_IntMap_cast<T_c_c>()) : default(object) );
 		}
 		
 		
-		global::haxe.IMap<string, T> global::haxe.IMap<string, T>.copy() {
-			return ((global::haxe.IMap<string, T>) (this.copy()) );
+		public static double HASH_UPPER;
+		
+		public static void assert(bool x) {
 		}
 		
 		
-		public virtual object haxe_ds_StringMap_cast<T_c>() {
+		public static int defaultK() {
+			return 0;
+		}
+		
+		
+		public static void arrayCopy(global::System.Array sourceArray, int sourceIndex, global::System.Array destinationArray, int destinationIndex, int length) {
+			global::System.Array.Copy(((global::System.Array) (sourceArray) ), ((int) (sourceIndex) ), ((global::System.Array) (destinationArray) ), ((int) (destinationIndex) ), ((int) (length) ));
+		}
+		
+		
+		public static int getInc(int k, int mask) {
+			unchecked {
+				return ( (( ( ( k >> 3 ) ^ ( k << 3 ) ) | 1 )) & mask );
+			}
+		}
+		
+		
+		public static int hash(int i) {
+			return i;
+		}
+		
+		
+		public static int getFlag(int[] flags, int i) {
+			unchecked {
+				return ( ((int) (( ((uint) (flags[( i >> 4 )]) ) >> (( (( i & 15 )) << 1 )) )) ) & 3 );
+			}
+		}
+		
+		
+		public static bool isDel(int flag) {
+			unchecked {
+				return ( (( flag & 1 )) != 0 );
+			}
+		}
+		
+		
+		public static bool isEmpty(int flag) {
+			unchecked {
+				return ( (( flag & 2 )) != 0 );
+			}
+		}
+		
+		
+		public static bool isEither(int flag) {
+			return ( flag != 0 );
+		}
+		
+		
+		public static void setIsDelFalse(int[] flags, int i) {
+			unchecked {
+				flags[( i >> 4 )] &=  ~ ((( 1 << (( (( i & 15 )) << 1 )) ))) ;
+			}
+		}
+		
+		
+		public static void setIsEmptyFalse(int[] flags, int i) {
+			unchecked {
+				flags[( i >> 4 )] &=  ~ ((( 2 << (( (( i & 15 )) << 1 )) ))) ;
+			}
+		}
+		
+		
+		public static void setIsBothFalse(int[] flags, int i) {
+			unchecked {
+				flags[( i >> 4 )] &=  ~ ((( 3 << (( (( i & 15 )) << 1 )) ))) ;
+			}
+		}
+		
+		
+		public static void setIsDelTrue(int[] flags, int i) {
+			unchecked {
+				flags[( i >> 4 )] |= ( 1 << (( (( i & 15 )) << 1 )) );
+			}
+		}
+		
+		
+		public static int roundUp(int x) {
+			unchecked {
+				 -- x;
+				x |= ((int) (( ((uint) (x) ) >> 1 )) );
+				x |= ((int) (( ((uint) (x) ) >> 2 )) );
+				x |= ((int) (( ((uint) (x) ) >> 4 )) );
+				x |= ((int) (( ((uint) (x) ) >> 8 )) );
+				x |= ((int) (( ((uint) (x) ) >> 16 )) );
+				return  ++ x;
+			}
+		}
+		
+		
+		public static int flagsSize(int m) {
+			unchecked {
+				if (( m < 16 )) {
+					return 1;
+				}
+				else {
+					return ( m >> 4 );
+				}
+				
+			}
+		}
+		
+		
+		global::haxe.IMap<int, T> global::haxe.IMap<int, T>.copy() {
+			return ((global::haxe.IMap<int, T>) (this.copy()) );
+		}
+		
+		
+		public virtual object haxe_ds_IntMap_cast<T_c>() {
 			unchecked {
 				if (global::haxe.lang.Runtime.eq(typeof(T), typeof(T_c))) {
 					return this;
 				}
 				
-				global::haxe.ds.StringMap<T_c> new_me = new global::haxe.ds.StringMap<T_c>(global::haxe.lang.EmptyObject.EMPTY);
+				global::haxe.ds.IntMap<T_c> new_me = new global::haxe.ds.IntMap<T_c>(global::haxe.lang.EmptyObject.EMPTY);
 				global::haxe.root.Array<string> fields = global::haxe.root.Reflect.fields(this);
 				int i = 0;
 				while (( i < fields.length )) {
@@ -82,13 +201,13 @@ namespace haxe.ds {
 		
 		
 		public virtual object haxe_IMap_cast<K_c, V_c>() {
-			return this.haxe_ds_StringMap_cast<T>();
+			return this.haxe_ds_IntMap_cast<T>();
 		}
 		
 		
-		public int[] hashes;
+		public int[] flags;
 		
-		public string[] _keys;
+		public int[] _keys;
 		
 		public T[] vals;
 		
@@ -100,151 +219,131 @@ namespace haxe.ds {
 		
 		public int upperBound;
 		
-		public string cachedKey;
+		public int cachedKey;
 		
 		public int cachedIndex;
 		
-		public virtual void @set(string key, T @value) {
+		public virtual void @set(int key, T @value) {
 			unchecked {
-				int x = default(int);
-				int k = default(int);
+				int targetIndex = default(int);
 				if (( this.nOccupied >= this.upperBound )) {
 					if (( this.nBuckets > ( this.size << 1 ) )) {
 						this.resize(( this.nBuckets - 1 ));
 					}
 					else {
-						this.resize(( this.nBuckets + 2 ));
+						this.resize(( this.nBuckets + 1 ));
 					}
 					
 				}
 				
-				int[] hashes = this.hashes;
-				string[] keys = this._keys;
-				int[] hashes1 = hashes;
+				int[] flags = this.flags;
+				int[] _keys = this._keys;
 				{
-					int mask = ( (( this.nBuckets == 0 )) ? (0) : (( this.nBuckets - 1 )) );
-					x = this.nBuckets;
-					int site = x;
-					int k1 = key.GetHashCode();
-					k1 = ( ( k1 + 2127912214 ) + (( k1 << 12 )) );
-					k1 = ( ( k1 ^ -949894596 ) ^ ( k1 >> 19 ) );
-					k1 = ( ( k1 + 374761393 ) + (( k1 << 5 )) );
-					k1 = ( ( k1 + (-744332180) ) ^ ( k1 << 9 ) );
-					k1 = ( ( k1 + (-42973499) ) + (( k1 << 3 )) );
-					k1 = ( ( k1 ^ -1252372727 ) ^ ( k1 >> 16 ) );
-					int ret = k1;
-					if (( (( ret & -2 )) == 0 )) {
-						if (( ret == 0 )) {
-							ret = 2;
-						}
-						else {
-							ret = -1;
-						}
-						
-					}
-					
-					k = ret;
-					int i = ( k & mask );
-					int nProbes = 0;
+					int mask = ( this.nBuckets - 1 );
+					int hashedKey = key;
+					int curIndex = ( hashedKey & mask );
 					int delKey = -1;
-					if (( hashes1[i] == 0 )) {
-						x = i;
+					int curFlag = 0;
+					if (( (( ( ((int) (( ((uint) (flags[( curIndex >> 4 )]) ) >> (( (( curIndex & 15 )) << 1 )) )) ) & 3 ) & 2 )) != 0 )) {
+						targetIndex = curIndex;
 					}
 					else {
-						int last = i;
-						int flag = default(int);
+						int inc = ( (( ( ( hashedKey >> 3 ) ^ ( hashedKey << 3 ) ) | 1 )) & mask );
+						int last = curIndex;
 						while (true) {
-							flag = hashes1[i];
-							if ( ! (( ! ((( ( flag == 0 ) || ( ( flag == k ) && ( ((string) (this._keys[i]) ) == key ) ) ))) )) ) {
+							bool tmp = default(bool);
+							if (( _keys[curIndex] != key )) {
+								curFlag = ( ((int) (( ((uint) (flags[( curIndex >> 4 )]) ) >> (( (( curIndex & 15 )) << 1 )) )) ) & 3 );
+								tmp = ( (( curFlag & 2 )) != 0 );
+							}
+							else {
+								tmp = true;
+							}
+							
+							if ( ! (( ! (tmp) )) ) {
 								break;
 							}
 							
-							if (( ( flag == 1 ) && ( delKey == -1 ) )) {
-								delKey = i;
+							if (( ( delKey == -1 ) && ( (( curFlag & 1 )) != 0 ) )) {
+								delKey = curIndex;
 							}
 							
-							i = ( ( i +  ++ nProbes ) & mask );
+							curIndex = ( ( curIndex + inc ) & mask );
 						}
 						
-						if (( ( flag == 0 ) && ( delKey != -1 ) )) {
-							x = delKey;
+						if (( ( delKey != -1 ) && ( (( ( ((int) (( ((uint) (flags[( curIndex >> 4 )]) ) >> (( (( curIndex & 15 )) << 1 )) )) ) & 3 ) & 2 )) != 0 ) )) {
+							targetIndex = delKey;
 						}
 						else {
-							x = i;
+							targetIndex = curIndex;
 						}
 						
 					}
 					
 				}
 				
-				int flag1 = hashes1[x];
-				if (( flag1 == 0 )) {
-					keys[x] = key;
-					this.vals[x] = @value;
-					hashes1[x] = k;
+				int flag = ( ((int) (( ((uint) (flags[( targetIndex >> 4 )]) ) >> (( (( targetIndex & 15 )) << 1 )) )) ) & 3 );
+				if (( (( flag & 2 )) != 0 )) {
+					_keys[targetIndex] = key;
+					this.vals[targetIndex] = @value;
+					flags[( targetIndex >> 4 )] &=  ~ ((( 3 << (( (( targetIndex & 15 )) << 1 )) ))) ;
 					this.size++;
 					this.nOccupied++;
 				}
-				else if (( flag1 == 1 )) {
-					keys[x] = key;
-					this.vals[x] = @value;
-					hashes1[x] = k;
+				else if (( (( flag & 1 )) != 0 )) {
+					_keys[targetIndex] = key;
+					this.vals[targetIndex] = @value;
+					flags[( targetIndex >> 4 )] &=  ~ ((( 3 << (( (( targetIndex & 15 )) << 1 )) ))) ;
 					this.size++;
 				}
 				else {
-					this.vals[x] = @value;
+					this.vals[targetIndex] = @value;
 				}
 				
-				this.cachedIndex = x;
-				this.cachedKey = key;
 			}
 		}
 		
 		
-		public int lookup(string key) {
+		public int lookup(int key) {
 			unchecked {
 				if (( this.nBuckets != 0 )) {
-					int[] hashes = this.hashes;
-					string[] keys = this._keys;
+					int[] flags = this.flags;
+					int[] _keys = this._keys;
 					int mask = ( this.nBuckets - 1 );
-					int k = key.GetHashCode();
-					k = ( ( k + 2127912214 ) + (( k << 12 )) );
-					k = ( ( k ^ -949894596 ) ^ ( k >> 19 ) );
-					k = ( ( k + 374761393 ) + (( k << 5 )) );
-					k = ( ( k + (-744332180) ) ^ ( k << 9 ) );
-					k = ( ( k + (-42973499) ) + (( k << 3 )) );
-					k = ( ( k ^ -1252372727 ) ^ ( k >> 16 ) );
-					int ret = k;
-					if (( (( ret & -2 )) == 0 )) {
-						if (( ret == 0 )) {
-							ret = 2;
+					int k = key;
+					int index = ( k & mask );
+					int curFlag = -1;
+					int inc = ( (( ( ( k >> 3 ) ^ ( k << 3 ) ) | 1 )) & mask );
+					int last = index;
+					while (true) {
+						if (( _keys[index] == key )) {
+							curFlag = ( ((int) (( ((uint) (flags[( index >> 4 )]) ) >> (( (( index & 15 )) << 1 )) )) ) & 3 );
+							if (( (( curFlag & 2 )) != 0 )) {
+								index = ( ( index + inc ) & mask );
+								if ( ! ((( index != last ))) ) {
+									break;
+								}
+								else {
+									continue;
+								}
+								
+							}
+							else if (( (( curFlag & 1 )) != 0 )) {
+								return -1;
+							}
+							else {
+								return index;
+							}
+							
 						}
 						else {
-							ret = -1;
+							index = ( ( index + inc ) & mask );
 						}
 						
-					}
-					
-					int hash = ret;
-					int k1 = hash;
-					int nProbes = 0;
-					int i = ( k1 & mask );
-					int last = i;
-					int flag = default(int);
-					while (true) {
-						flag = hashes[i];
-						if ( ! ((( ( flag != 0 ) && (( ( ( flag == 1 ) || ( flag != k1 ) ) || ( ((string) (keys[i]) ) != key ) )) ))) ) {
+						if ( ! ((( index != last ))) ) {
 							break;
 						}
 						
-						i = ( ( i +  ++ nProbes ) & mask );
-					}
-					
-					if (( (( flag & -2 )) == 0 )) {
-						return -1;
-					}
-					else {
-						return i;
 					}
 					
 				}
@@ -254,136 +353,7 @@ namespace haxe.ds {
 		}
 		
 		
-		public void resize(int newNBuckets) {
-			unchecked {
-				int[] newHash = null;
-				int j = 1;
-				{
-					int x = newNBuckets;
-					 -- x;
-					x |= ((int) (( ((uint) (x) ) >> 1 )) );
-					x |= ((int) (( ((uint) (x) ) >> 2 )) );
-					x |= ((int) (( ((uint) (x) ) >> 4 )) );
-					x |= ((int) (( ((uint) (x) ) >> 8 )) );
-					x |= ((int) (( ((uint) (x) ) >> 16 )) );
-					 ++ x;
-					newNBuckets = x;
-					if (( newNBuckets < 4 )) {
-						newNBuckets = 4;
-					}
-					
-					if (( this.size >= ( ( newNBuckets * 0.77 ) + 0.5 ) )) {
-						j = 0;
-					}
-					else {
-						int nfSize = newNBuckets;
-						newHash = new int[nfSize];
-						if (( this.nBuckets < newNBuckets )) {
-							string[] k = new string[newNBuckets];
-							if (( this._keys != null )) {
-								global::System.Array.Copy(((global::System.Array) (this._keys) ), ((int) (0) ), ((global::System.Array) (k) ), ((int) (0) ), ((int) (this.nBuckets) ));
-							}
-							
-							this._keys = k;
-							T[] v = new T[newNBuckets];
-							if (( this.vals != null )) {
-								global::System.Array.Copy(((global::System.Array) (this.vals) ), ((int) (0) ), ((global::System.Array) (v) ), ((int) (0) ), ((int) (this.nBuckets) ));
-							}
-							
-							this.vals = v;
-						}
-						
-					}
-					
-				}
-				
-				if (( j != 0 )) {
-					this.cachedKey = null;
-					this.cachedIndex = -1;
-					j = -1;
-					int nBuckets = this.nBuckets;
-					string[] _keys = this._keys;
-					T[] vals = this.vals;
-					int[] hashes = this.hashes;
-					int newMask = ( newNBuckets - 1 );
-					while ((  ++ j < nBuckets )) {
-						int k1 = hashes[j];
-						if (( (( k1 & -2 )) != 0 )) {
-							string key = ((string) (_keys[j]) );
-							T val = global::haxe.lang.Runtime.genericCast<T>(vals[j]);
-							_keys[j] = null;
-							vals[j] = default(T);
-							hashes[j] = 1;
-							while (true) {
-								int nProbes = 0;
-								int i = ( k1 & newMask );
-								while (( newHash[i] != 0 )) {
-									i = ( ( i +  ++ nProbes ) & newMask );
-								}
-								
-								newHash[i] = k1;
-								bool tmp = default(bool);
-								if (( i < nBuckets )) {
-									k1 = hashes[i];
-									tmp = ( (( k1 & -2 )) != 0 );
-								}
-								else {
-									tmp = false;
-								}
-								
-								if (tmp) {
-									{
-										string tmp1 = ((string) (_keys[i]) );
-										_keys[i] = key;
-										key = tmp1;
-									}
-									
-									{
-										T tmp2 = global::haxe.lang.Runtime.genericCast<T>(vals[i]);
-										vals[i] = val;
-										val = tmp2;
-									}
-									
-									hashes[i] = 1;
-								}
-								else {
-									_keys[i] = key;
-									vals[i] = val;
-									break;
-								}
-								
-							}
-							
-						}
-						
-					}
-					
-					if (( nBuckets > newNBuckets )) {
-						{
-							string[] k2 = new string[newNBuckets];
-							global::System.Array.Copy(((global::System.Array) (_keys) ), ((int) (0) ), ((global::System.Array) (k2) ), ((int) (0) ), ((int) (newNBuckets) ));
-							this._keys = k2;
-						}
-						
-						{
-							T[] v1 = new T[newNBuckets];
-							global::System.Array.Copy(((global::System.Array) (vals) ), ((int) (0) ), ((global::System.Array) (v1) ), ((int) (0) ), ((int) (newNBuckets) ));
-							this.vals = v1;
-						}
-						
-					}
-					
-					this.hashes = newHash;
-					this.nBuckets = newNBuckets;
-					this.nOccupied = this.size;
-					this.upperBound = ((int) (( ( newNBuckets * 0.77 ) + .5 )) );
-				}
-				
-			}
-		}
-		
-		
-		public virtual global::haxe.lang.Null<T> @get(string key) {
+		public virtual global::haxe.lang.Null<T> @get(int key) {
 			unchecked {
 				int idx = -1;
 				bool tmp = default(bool);
@@ -411,7 +381,7 @@ namespace haxe.ds {
 		}
 		
 		
-		public virtual T getDefault(string key, T def) {
+		public virtual T getDefault(int key, T def) {
 			unchecked {
 				int idx = -1;
 				bool tmp = default(bool);
@@ -439,7 +409,7 @@ namespace haxe.ds {
 		}
 		
 		
-		public virtual bool exists(string key) {
+		public virtual bool exists(int key) {
 			unchecked {
 				int idx = -1;
 				bool tmp = default(bool);
@@ -467,7 +437,7 @@ namespace haxe.ds {
 		}
 		
 		
-		public virtual bool @remove(string key) {
+		public virtual bool @remove(int key) {
 			unchecked {
 				int idx = -1;
 				bool tmp = default(bool);
@@ -491,10 +461,12 @@ namespace haxe.ds {
 						this.cachedIndex = -1;
 					}
 					
-					this.hashes[idx] = 1;
-					this._keys[idx] = null;
-					this.vals[idx] = default(T);
-					 -- this.size;
+					if (( (( ((int) (( ((uint) (this.flags[( idx >> 4 )]) ) >> (( (( idx & 15 )) << 1 )) )) ) & 3 )) == 0 )) {
+						this.flags[( idx >> 4 )] |= ( 1 << (( (( idx & 15 )) << 1 )) );
+						 -- this.size;
+						this.vals[idx] = default(T);
+					}
+					
 					return true;
 				}
 				
@@ -502,27 +474,156 @@ namespace haxe.ds {
 		}
 		
 		
+		public void resize(int newNBuckets) {
+			unchecked {
+				int[] newFlags = null;
+				int j = 1;
+				{
+					int x = newNBuckets;
+					 -- x;
+					x |= ((int) (( ((uint) (x) ) >> 1 )) );
+					x |= ((int) (( ((uint) (x) ) >> 2 )) );
+					x |= ((int) (( ((uint) (x) ) >> 4 )) );
+					x |= ((int) (( ((uint) (x) ) >> 8 )) );
+					x |= ((int) (( ((uint) (x) ) >> 16 )) );
+					 ++ x;
+					newNBuckets = x;
+					if (( newNBuckets < 4 )) {
+						newNBuckets = 4;
+					}
+					
+					if (( this.size >= ( ( newNBuckets * 0.7 ) + 0.5 ) )) {
+						j = 0;
+					}
+					else {
+						int nfSize = ( (( newNBuckets < 16 )) ? (1) : (( newNBuckets >> 4 )) );
+						newFlags = new int[nfSize];
+						{
+							int _g = 0;
+							int _g1 = nfSize;
+							while (( _g < _g1 )) {
+								int i = _g++;
+								newFlags[i] = -1431655766;
+							}
+							
+						}
+						
+						if (( this.nBuckets < newNBuckets )) {
+							int[] k = new int[newNBuckets];
+							if (( this._keys != null )) {
+								global::System.Array.Copy(((global::System.Array) (this._keys) ), ((int) (0) ), ((global::System.Array) (k) ), ((int) (0) ), ((int) (this.nBuckets) ));
+							}
+							
+							this._keys = k;
+							T[] v = new T[newNBuckets];
+							if (( this.vals != null )) {
+								global::System.Array.Copy(((global::System.Array) (this.vals) ), ((int) (0) ), ((global::System.Array) (v) ), ((int) (0) ), ((int) (this.nBuckets) ));
+							}
+							
+							this.vals = v;
+						}
+						
+					}
+					
+				}
+				
+				if (( j != 0 )) {
+					this.cachedKey = 0;
+					this.cachedIndex = -1;
+					j = -1;
+					int nBuckets = this.nBuckets;
+					int[] _keys = this._keys;
+					T[] vals = this.vals;
+					int[] flags = this.flags;
+					int newMask = ( newNBuckets - 1 );
+					while ((  ++ j < nBuckets )) {
+						if (( (( ((int) (( ((uint) (flags[( j >> 4 )]) ) >> (( (( j & 15 )) << 1 )) )) ) & 3 )) == 0 )) {
+							int key = _keys[j];
+							T val = global::haxe.lang.Runtime.genericCast<T>(vals[j]);
+							vals[j] = default(T);
+							flags[( j >> 4 )] |= ( 1 << (( (( j & 15 )) << 1 )) );
+							while (true) {
+								int k1 = key;
+								int inc = ( (( ( ( k1 >> 3 ) ^ ( k1 << 3 ) ) | 1 )) & newMask );
+								int i1 = ( k1 & newMask );
+								while (( (( ( ((int) (( ((uint) (newFlags[( i1 >> 4 )]) ) >> (( (( i1 & 15 )) << 1 )) )) ) & 3 ) & 2 )) == 0 )) {
+									i1 = ( ( i1 + inc ) & newMask );
+								}
+								
+								newFlags[( i1 >> 4 )] &=  ~ ((( 2 << (( (( i1 & 15 )) << 1 )) ))) ;
+								if (( ( i1 < nBuckets ) && ( (( ((int) (( ((uint) (flags[( i1 >> 4 )]) ) >> (( (( i1 & 15 )) << 1 )) )) ) & 3 )) == 0 ) )) {
+									{
+										int tmp = _keys[i1];
+										_keys[i1] = key;
+										key = tmp;
+									}
+									
+									{
+										T tmp1 = global::haxe.lang.Runtime.genericCast<T>(vals[i1]);
+										vals[i1] = val;
+										val = tmp1;
+									}
+									
+									flags[( i1 >> 4 )] |= ( 1 << (( (( i1 & 15 )) << 1 )) );
+								}
+								else {
+									_keys[i1] = key;
+									vals[i1] = val;
+									break;
+								}
+								
+							}
+							
+						}
+						
+					}
+					
+					if (( nBuckets > newNBuckets )) {
+						{
+							int[] k2 = new int[newNBuckets];
+							global::System.Array.Copy(((global::System.Array) (_keys) ), ((int) (0) ), ((global::System.Array) (k2) ), ((int) (0) ), ((int) (newNBuckets) ));
+							this._keys = k2;
+						}
+						
+						{
+							T[] v1 = new T[newNBuckets];
+							global::System.Array.Copy(((global::System.Array) (vals) ), ((int) (0) ), ((global::System.Array) (v1) ), ((int) (0) ), ((int) (newNBuckets) ));
+							this.vals = v1;
+						}
+						
+					}
+					
+					this.flags = newFlags;
+					this.nBuckets = newNBuckets;
+					this.nOccupied = this.size;
+					this.upperBound = ((int) (( ( newNBuckets * 0.7 ) + .5 )) );
+				}
+				
+			}
+		}
+		
+		
 		public object keys() {
-			return new global::haxe.ds._StringMap.StringMapKeyIterator<T>(((global::haxe.ds.StringMap<T>) (this) ));
+			return new global::haxe.ds._IntMap.IntMapKeyIterator<T>(((global::haxe.ds.IntMap<T>) (this) ));
 		}
 		
 		
 		public object iterator() {
-			return new global::haxe.ds._StringMap.StringMapValueIterator<T>(((global::haxe.ds.StringMap<T>) (this) ));
+			return new global::haxe.ds._IntMap.IntMapValueIterator<T>(((global::haxe.ds.IntMap<T>) (this) ));
 		}
 		
 		
 		public object keyValueIterator() {
-			return new global::haxe.iterators.MapKeyValueIterator<string, T>(((global::haxe.IMap<string, T>) (this) ));
+			return new global::haxe.iterators.MapKeyValueIterator<int, T>(((global::haxe.IMap<int, T>) (this) ));
 		}
 		
 		
-		public virtual global::haxe.ds.StringMap<T> copy() {
-			global::haxe.ds.StringMap<T> copied = new global::haxe.ds.StringMap<T>();
+		public virtual global::haxe.ds.IntMap<T> copy() {
+			global::haxe.ds.IntMap<T> copied = new global::haxe.ds.IntMap<T>();
 			{
-				object key = ((object) (new global::haxe.ds._StringMap.StringMapKeyIterator<T>(((global::haxe.ds.StringMap<T>) (this) ))) );
+				object key = ((object) (new global::haxe.ds._IntMap.IntMapKeyIterator<T>(((global::haxe.ds.IntMap<T>) (this) ))) );
 				while (global::haxe.lang.Runtime.toBool(global::haxe.lang.Runtime.callField(key, "hasNext", 407283053, null))) {
-					string key1 = global::haxe.lang.Runtime.toString(global::haxe.lang.Runtime.callField(key, "next", 1224901875, null));
+					int key1 = ((int) (global::haxe.lang.Runtime.toInt(global::haxe.lang.Runtime.callField(key, "next", 1224901875, null))) );
 					copied.@set(key1, (this.@get(key1)).@value);
 				}
 				
@@ -535,11 +636,11 @@ namespace haxe.ds {
 		public virtual string toString() {
 			global::System.Text.StringBuilder s_b = new global::System.Text.StringBuilder();
 			s_b.Append(((string) ("{") ));
-			object it = ((object) (new global::haxe.ds._StringMap.StringMapKeyIterator<T>(((global::haxe.ds.StringMap<T>) (this) ))) );
+			object it = ((object) (new global::haxe.ds._IntMap.IntMapKeyIterator<T>(((global::haxe.ds.IntMap<T>) (this) ))) );
 			{
 				object i = it;
 				while (global::haxe.lang.Runtime.toBool(global::haxe.lang.Runtime.callField(i, "hasNext", 407283053, null))) {
-					string i1 = global::haxe.lang.Runtime.toString(global::haxe.lang.Runtime.callField(i, "next", 1224901875, null));
+					int i1 = ((int) (global::haxe.lang.Runtime.toInt(global::haxe.lang.Runtime.callField(i, "next", 1224901875, null))) );
 					s_b.Append(((string) (global::haxe.root.Std.@string(i1)) ));
 					s_b.Append(((string) (" => ") ));
 					s_b.Append(((string) (global::haxe.root.Std.@string(global::haxe.root.Std.@string((this.@get(i1)).toDynamic()))) ));
@@ -558,14 +659,14 @@ namespace haxe.ds {
 		
 		public virtual void clear() {
 			unchecked {
-				this.hashes = null;
+				this.flags = null;
 				this._keys = null;
 				this.vals = null;
 				this.nBuckets = 0;
 				this.size = 0;
 				this.nOccupied = 0;
 				this.upperBound = 0;
-				this.cachedKey = null;
+				this.cachedKey = 0;
 				this.cachedIndex = -1;
 			}
 		}
@@ -577,6 +678,13 @@ namespace haxe.ds {
 					case 922671056:
 					{
 						this.cachedIndex = ((int) (@value) );
+						return @value;
+					}
+					
+					
+					case 1395555037:
+					{
+						this.cachedKey = ((int) (@value) );
 						return @value;
 					}
 					
@@ -632,7 +740,7 @@ namespace haxe.ds {
 					
 					case 1395555037:
 					{
-						this.cachedKey = global::haxe.lang.Runtime.toString(@value);
+						this.cachedKey = ((int) (global::haxe.lang.Runtime.toInt(@value)) );
 						return @value;
 					}
 					
@@ -674,14 +782,14 @@ namespace haxe.ds {
 					
 					case 2048392659:
 					{
-						this._keys = ((string[]) (@value) );
+						this._keys = ((int[]) (@value) );
 						return @value;
 					}
 					
 					
-					case 995006396:
+					case 42740551:
 					{
-						this.hashes = ((int[]) (@value) );
+						this.flags = ((int[]) (@value) );
 						return @value;
 					}
 					
@@ -736,6 +844,12 @@ namespace haxe.ds {
 					}
 					
 					
+					case 142301684:
+					{
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(this, "resize", 142301684)) );
+					}
+					
+					
 					case 76061764:
 					{
 						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(this, "remove", 76061764)) );
@@ -757,12 +871,6 @@ namespace haxe.ds {
 					case 5144726:
 					{
 						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(this, "get", 5144726)) );
-					}
-					
-					
-					case 142301684:
-					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(this, "resize", 142301684)) );
 					}
 					
 					
@@ -826,9 +934,9 @@ namespace haxe.ds {
 					}
 					
 					
-					case 995006396:
+					case 42740551:
 					{
-						return this.hashes;
+						return this.flags;
 					}
 					
 					
@@ -849,6 +957,12 @@ namespace haxe.ds {
 					case 922671056:
 					{
 						return ((double) (this.cachedIndex) );
+					}
+					
+					
+					case 1395555037:
+					{
+						return ((double) (this.cachedKey) );
 					}
 					
 					
@@ -927,30 +1041,6 @@ namespace haxe.ds {
 					}
 					
 					
-					case 76061764:
-					{
-						return this.@remove(global::haxe.lang.Runtime.toString(dynargs[0]));
-					}
-					
-					
-					case 1071652316:
-					{
-						return this.exists(global::haxe.lang.Runtime.toString(dynargs[0]));
-					}
-					
-					
-					case 1797611211:
-					{
-						return this.getDefault(global::haxe.lang.Runtime.toString(dynargs[0]), global::haxe.lang.Runtime.genericCast<T>(dynargs[1]));
-					}
-					
-					
-					case 5144726:
-					{
-						return (this.@get(global::haxe.lang.Runtime.toString(dynargs[0]))).toDynamic();
-					}
-					
-					
 					case 142301684:
 					{
 						this.resize(((int) (global::haxe.lang.Runtime.toInt(dynargs[0])) ));
@@ -958,15 +1048,39 @@ namespace haxe.ds {
 					}
 					
 					
+					case 76061764:
+					{
+						return this.@remove(((int) (global::haxe.lang.Runtime.toInt(dynargs[0])) ));
+					}
+					
+					
+					case 1071652316:
+					{
+						return this.exists(((int) (global::haxe.lang.Runtime.toInt(dynargs[0])) ));
+					}
+					
+					
+					case 1797611211:
+					{
+						return this.getDefault(((int) (global::haxe.lang.Runtime.toInt(dynargs[0])) ), global::haxe.lang.Runtime.genericCast<T>(dynargs[1]));
+					}
+					
+					
+					case 5144726:
+					{
+						return (this.@get(((int) (global::haxe.lang.Runtime.toInt(dynargs[0])) ))).toDynamic();
+					}
+					
+					
 					case 1639293562:
 					{
-						return this.lookup(global::haxe.lang.Runtime.toString(dynargs[0]));
+						return this.lookup(((int) (global::haxe.lang.Runtime.toInt(dynargs[0])) ));
 					}
 					
 					
 					case 5741474:
 					{
-						this.@set(global::haxe.lang.Runtime.toString(dynargs[0]), global::haxe.lang.Runtime.genericCast<T>(dynargs[1]));
+						this.@set(((int) (global::haxe.lang.Runtime.toInt(dynargs[0])) ), global::haxe.lang.Runtime.genericCast<T>(dynargs[1]));
 						break;
 					}
 					
@@ -992,7 +1106,7 @@ namespace haxe.ds {
 			baseArr.push("nBuckets");
 			baseArr.push("vals");
 			baseArr.push("_keys");
-			baseArr.push("hashes");
+			baseArr.push("flags");
 			base.__hx_getFields(baseArr);
 		}
 		
@@ -1009,20 +1123,20 @@ namespace haxe.ds {
 
 #pragma warning disable 109, 114, 219, 429, 168, 162
 namespace haxe.ds {
-	[global::haxe.lang.GenericInterface(typeof(global::haxe.ds.StringMap<object>))]
-	public interface StringMap : global::haxe.lang.IHxObject, global::haxe.lang.IGenericObject {
+	[global::haxe.lang.GenericInterface(typeof(global::haxe.ds.IntMap<object>))]
+	public interface IntMap : global::haxe.lang.IHxObject, global::haxe.lang.IGenericObject {
 		
-		object haxe_ds_StringMap_cast<T_c>();
+		object haxe_ds_IntMap_cast<T_c>();
 		
 		object haxe_IMap_cast<K_c, V_c>();
 		
-		int lookup(string key);
+		int lookup(int key);
+		
+		bool exists(int key);
+		
+		bool @remove(int key);
 		
 		void resize(int newNBuckets);
-		
-		bool exists(string key);
-		
-		bool @remove(string key);
 		
 		object keys();
 		
@@ -1040,36 +1154,36 @@ namespace haxe.ds {
 
 
 #pragma warning disable 109, 114, 219, 429, 168, 162
-namespace haxe.ds._StringMap {
-	public sealed class StringMapKeyIterator<T> : global::haxe.lang.HxObject, global::haxe.ds._StringMap.StringMapKeyIterator {
+namespace haxe.ds._IntMap {
+	public sealed class IntMapKeyIterator<T> : global::haxe.lang.HxObject, global::haxe.ds._IntMap.IntMapKeyIterator {
 		
-		public StringMapKeyIterator(global::haxe.lang.EmptyObject empty) {
+		public IntMapKeyIterator(global::haxe.lang.EmptyObject empty) {
 		}
 		
 		
-		public StringMapKeyIterator(global::haxe.ds.StringMap<T> m) {
-			global::haxe.ds._StringMap.StringMapKeyIterator<object>.__hx_ctor_haxe_ds__StringMap_StringMapKeyIterator<T>(((global::haxe.ds._StringMap.StringMapKeyIterator<T>) (this) ), ((global::haxe.ds.StringMap<T>) (m) ));
+		public IntMapKeyIterator(global::haxe.ds.IntMap<T> m) {
+			global::haxe.ds._IntMap.IntMapKeyIterator<object>.__hx_ctor_haxe_ds__IntMap_IntMapKeyIterator<T>(((global::haxe.ds._IntMap.IntMapKeyIterator<T>) (this) ), ((global::haxe.ds.IntMap<T>) (m) ));
 		}
 		
 		
-		private static void __hx_ctor_haxe_ds__StringMap_StringMapKeyIterator<T_c>(global::haxe.ds._StringMap.StringMapKeyIterator<T_c> __hx_this, global::haxe.ds.StringMap<T_c> m) {
-			__hx_this.m = m;
+		private static void __hx_ctor_haxe_ds__IntMap_IntMapKeyIterator<T_c>(global::haxe.ds._IntMap.IntMapKeyIterator<T_c> __hx_this, global::haxe.ds.IntMap<T_c> m) {
 			__hx_this.i = 0;
+			__hx_this.m = m;
 			__hx_this.len = m.nBuckets;
 		}
 		
 		
-		public static object __hx_cast<T_c_c>(global::haxe.ds._StringMap.StringMapKeyIterator me) {
-			return ( (( me != null )) ? (me.haxe_ds__StringMap_StringMapKeyIterator_cast<T_c_c>()) : default(object) );
+		public static object __hx_cast<T_c_c>(global::haxe.ds._IntMap.IntMapKeyIterator me) {
+			return ( (( me != null )) ? (me.haxe_ds__IntMap_IntMapKeyIterator_cast<T_c_c>()) : default(object) );
 		}
 		
 		
-		public object haxe_ds__StringMap_StringMapKeyIterator_cast<T_c>() {
+		public object haxe_ds__IntMap_IntMapKeyIterator_cast<T_c>() {
 			if (global::haxe.lang.Runtime.eq(typeof(T), typeof(T_c))) {
 				return this;
 			}
 			
-			global::haxe.ds._StringMap.StringMapKeyIterator<T_c> new_me = new global::haxe.ds._StringMap.StringMapKeyIterator<T_c>(((global::haxe.lang.EmptyObject) (global::haxe.lang.EmptyObject.EMPTY) ));
+			global::haxe.ds._IntMap.IntMapKeyIterator<T_c> new_me = new global::haxe.ds._IntMap.IntMapKeyIterator<T_c>(((global::haxe.lang.EmptyObject) (global::haxe.lang.EmptyObject.EMPTY) ));
 			global::haxe.root.Array<string> fields = global::haxe.root.Reflect.fields(this);
 			int i = 0;
 			while (( i < fields.length )) {
@@ -1081,7 +1195,7 @@ namespace haxe.ds._StringMap {
 		}
 		
 		
-		public global::haxe.ds.StringMap<T> m;
+		public global::haxe.ds.IntMap<T> m;
 		
 		public int i;
 		
@@ -1094,7 +1208,7 @@ namespace haxe.ds._StringMap {
 					int _g1 = this.len;
 					while (( _g < _g1 )) {
 						int j = _g++;
-						if (( (( this.m.hashes[j] & -2 )) != 0 )) {
+						if (( (( ((int) (( ((uint) (this.m.flags[( j >> 4 )]) ) >> (( (( j & 15 )) << 1 )) )) ) & 3 )) == 0 )) {
 							this.i = j;
 							return true;
 						}
@@ -1108,8 +1222,8 @@ namespace haxe.ds._StringMap {
 		}
 		
 		
-		public string next() {
-			string ret = ((string) (this.m._keys[this.i]) );
+		public int next() {
+			int ret = this.m._keys[this.i];
 			this.m.cachedIndex = this.i;
 			this.m.cachedKey = ret;
 			this.i++;
@@ -1164,7 +1278,7 @@ namespace haxe.ds._StringMap {
 					
 					case 109:
 					{
-						this.m = ((global::haxe.ds.StringMap<T>) (global::haxe.ds.StringMap<object>.__hx_cast<T>(((global::haxe.ds.StringMap) (@value) ))) );
+						this.m = ((global::haxe.ds.IntMap<T>) (global::haxe.ds.IntMap<object>.__hx_cast<T>(((global::haxe.ds.IntMap) (@value) ))) );
 						return @value;
 					}
 					
@@ -1290,15 +1404,15 @@ namespace haxe.ds._StringMap {
 
 
 #pragma warning disable 109, 114, 219, 429, 168, 162
-namespace haxe.ds._StringMap {
-	[global::haxe.lang.GenericInterface(typeof(global::haxe.ds._StringMap.StringMapKeyIterator<object>))]
-	public interface StringMapKeyIterator : global::haxe.lang.IHxObject, global::haxe.lang.IGenericObject {
+namespace haxe.ds._IntMap {
+	[global::haxe.lang.GenericInterface(typeof(global::haxe.ds._IntMap.IntMapKeyIterator<object>))]
+	public interface IntMapKeyIterator : global::haxe.lang.IHxObject, global::haxe.lang.IGenericObject {
 		
-		object haxe_ds__StringMap_StringMapKeyIterator_cast<T_c>();
+		object haxe_ds__IntMap_IntMapKeyIterator_cast<T_c>();
 		
 		bool hasNext();
 		
-		string next();
+		int next();
 		
 	}
 }
@@ -1306,36 +1420,36 @@ namespace haxe.ds._StringMap {
 
 
 #pragma warning disable 109, 114, 219, 429, 168, 162
-namespace haxe.ds._StringMap {
-	public sealed class StringMapValueIterator<T> : global::haxe.lang.HxObject, global::haxe.ds._StringMap.StringMapValueIterator {
+namespace haxe.ds._IntMap {
+	public sealed class IntMapValueIterator<T> : global::haxe.lang.HxObject, global::haxe.ds._IntMap.IntMapValueIterator {
 		
-		public StringMapValueIterator(global::haxe.lang.EmptyObject empty) {
+		public IntMapValueIterator(global::haxe.lang.EmptyObject empty) {
 		}
 		
 		
-		public StringMapValueIterator(global::haxe.ds.StringMap<T> m) {
-			global::haxe.ds._StringMap.StringMapValueIterator<object>.__hx_ctor_haxe_ds__StringMap_StringMapValueIterator<T>(((global::haxe.ds._StringMap.StringMapValueIterator<T>) (this) ), ((global::haxe.ds.StringMap<T>) (m) ));
+		public IntMapValueIterator(global::haxe.ds.IntMap<T> m) {
+			global::haxe.ds._IntMap.IntMapValueIterator<object>.__hx_ctor_haxe_ds__IntMap_IntMapValueIterator<T>(((global::haxe.ds._IntMap.IntMapValueIterator<T>) (this) ), ((global::haxe.ds.IntMap<T>) (m) ));
 		}
 		
 		
-		private static void __hx_ctor_haxe_ds__StringMap_StringMapValueIterator<T_c>(global::haxe.ds._StringMap.StringMapValueIterator<T_c> __hx_this, global::haxe.ds.StringMap<T_c> m) {
-			__hx_this.m = m;
+		private static void __hx_ctor_haxe_ds__IntMap_IntMapValueIterator<T_c>(global::haxe.ds._IntMap.IntMapValueIterator<T_c> __hx_this, global::haxe.ds.IntMap<T_c> m) {
 			__hx_this.i = 0;
+			__hx_this.m = m;
 			__hx_this.len = m.nBuckets;
 		}
 		
 		
-		public static object __hx_cast<T_c_c>(global::haxe.ds._StringMap.StringMapValueIterator me) {
-			return ( (( me != null )) ? (me.haxe_ds__StringMap_StringMapValueIterator_cast<T_c_c>()) : default(object) );
+		public static object __hx_cast<T_c_c>(global::haxe.ds._IntMap.IntMapValueIterator me) {
+			return ( (( me != null )) ? (me.haxe_ds__IntMap_IntMapValueIterator_cast<T_c_c>()) : default(object) );
 		}
 		
 		
-		public object haxe_ds__StringMap_StringMapValueIterator_cast<T_c>() {
+		public object haxe_ds__IntMap_IntMapValueIterator_cast<T_c>() {
 			if (global::haxe.lang.Runtime.eq(typeof(T), typeof(T_c))) {
 				return this;
 			}
 			
-			global::haxe.ds._StringMap.StringMapValueIterator<T_c> new_me = new global::haxe.ds._StringMap.StringMapValueIterator<T_c>(((global::haxe.lang.EmptyObject) (global::haxe.lang.EmptyObject.EMPTY) ));
+			global::haxe.ds._IntMap.IntMapValueIterator<T_c> new_me = new global::haxe.ds._IntMap.IntMapValueIterator<T_c>(((global::haxe.lang.EmptyObject) (global::haxe.lang.EmptyObject.EMPTY) ));
 			global::haxe.root.Array<string> fields = global::haxe.root.Reflect.fields(this);
 			int i = 0;
 			while (( i < fields.length )) {
@@ -1347,7 +1461,7 @@ namespace haxe.ds._StringMap {
 		}
 		
 		
-		public global::haxe.ds.StringMap<T> m;
+		public global::haxe.ds.IntMap<T> m;
 		
 		public int i;
 		
@@ -1360,7 +1474,7 @@ namespace haxe.ds._StringMap {
 					int _g1 = this.len;
 					while (( _g < _g1 )) {
 						int j = _g++;
-						if (( (( this.m.hashes[j] & -2 )) != 0 )) {
+						if (( (( ((int) (( ((uint) (this.m.flags[( j >> 4 )]) ) >> (( (( j & 15 )) << 1 )) )) ) & 3 )) == 0 )) {
 							this.i = j;
 							return true;
 						}
@@ -1426,7 +1540,7 @@ namespace haxe.ds._StringMap {
 					
 					case 109:
 					{
-						this.m = ((global::haxe.ds.StringMap<T>) (global::haxe.ds.StringMap<object>.__hx_cast<T>(((global::haxe.ds.StringMap) (@value) ))) );
+						this.m = ((global::haxe.ds.IntMap<T>) (global::haxe.ds.IntMap<object>.__hx_cast<T>(((global::haxe.ds.IntMap) (@value) ))) );
 						return @value;
 					}
 					
@@ -1552,11 +1666,11 @@ namespace haxe.ds._StringMap {
 
 
 #pragma warning disable 109, 114, 219, 429, 168, 162
-namespace haxe.ds._StringMap {
-	[global::haxe.lang.GenericInterface(typeof(global::haxe.ds._StringMap.StringMapValueIterator<object>))]
-	public interface StringMapValueIterator : global::haxe.lang.IHxObject, global::haxe.lang.IGenericObject {
+namespace haxe.ds._IntMap {
+	[global::haxe.lang.GenericInterface(typeof(global::haxe.ds._IntMap.IntMapValueIterator<object>))]
+	public interface IntMapValueIterator : global::haxe.lang.IHxObject, global::haxe.lang.IGenericObject {
 		
-		object haxe_ds__StringMap_StringMapValueIterator_cast<T_c>();
+		object haxe_ds__IntMap_IntMapValueIterator_cast<T_c>();
 		
 		bool hasNext();
 		

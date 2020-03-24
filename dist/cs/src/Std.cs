@@ -100,6 +100,263 @@ namespace haxe.root {
 		}
 		
 		
+		public static global::haxe.lang.Null<int> parseInt(string x) {
+			unchecked {
+				if (( x == null )) {
+					return default(global::haxe.lang.Null<int>);
+				}
+				
+				int @base = 10;
+				int len = x.Length;
+				int foundCount = 0;
+				int sign = 0;
+				int firstDigitIndex = 0;
+				int lastDigitIndex = -1;
+				int previous = 0;
+				{
+					int _g = 0;
+					int _g1 = len;
+					while (( _g < _g1 )) {
+						int i = _g++;
+						int c = ( (((bool) (( ((uint) (i) ) < x.Length )) )) ? (((int) (x[i]) )) : (-1) );
+						if (( ( ( c > 8 ) && ( c < 14 ) ) || ( c == 32 ) )) {
+							if (( foundCount > 0 )) {
+								return default(global::haxe.lang.Null<int>);
+							}
+							
+							continue;
+						}
+						else {
+							switch (c) {
+								case 43:
+								{
+									if (( foundCount == 0 )) {
+										sign = 1;
+									}
+									else if (( ( 48 <= c ) && ( c <= 57 ) )) {
+									}
+									else if (( ( @base == 16 ) && (( ( ( 97 <= c ) && ( c <= 122 ) ) || ( ( 65 <= c ) && ( c <= 90 ) ) )) )) {
+									}
+									else {
+										goto label1;
+									}
+									
+									break;
+								}
+								
+								
+								case 45:
+								{
+									if (( foundCount == 0 )) {
+										sign = -1;
+									}
+									else if (( ( 48 <= c ) && ( c <= 57 ) )) {
+									}
+									else if (( ( @base == 16 ) && (( ( ( 97 <= c ) && ( c <= 122 ) ) || ( ( 65 <= c ) && ( c <= 90 ) ) )) )) {
+									}
+									else {
+										goto label1;
+									}
+									
+									break;
+								}
+								
+								
+								case 48:
+								{
+									if (( ( foundCount == 0 ) || ( ( foundCount == 1 ) && ( sign != 0 ) ) )) {
+									}
+									else if (( ( 48 <= c ) && ( c <= 57 ) )) {
+									}
+									else if (( ( @base == 16 ) && (( ( ( 97 <= c ) && ( c <= 122 ) ) || ( ( 65 <= c ) && ( c <= 90 ) ) )) )) {
+									}
+									else {
+										goto label1;
+									}
+									
+									break;
+								}
+								
+								
+								case 88:
+								case 120:
+								{
+									if (( ( previous == 48 ) && (( ( ( foundCount == 1 ) && ( sign == 0 ) ) || ( ( foundCount == 2 ) && ( sign != 0 ) ) )) )) {
+										@base = 16;
+									}
+									else if (( ( 48 <= c ) && ( c <= 57 ) )) {
+									}
+									else if (( ( @base == 16 ) && (( ( ( 97 <= c ) && ( c <= 122 ) ) || ( ( 65 <= c ) && ( c <= 90 ) ) )) )) {
+									}
+									else {
+										goto label1;
+									}
+									
+									break;
+								}
+								
+								
+								default:
+								{
+									if (( ( 48 <= c ) && ( c <= 57 ) )) {
+									}
+									else if (( ( @base == 16 ) && (( ( ( 97 <= c ) && ( c <= 122 ) ) || ( ( 65 <= c ) && ( c <= 90 ) ) )) )) {
+									}
+									else {
+										goto label1;
+									}
+									
+									break;
+								}
+								
+							}
+							
+						}
+						
+						if (( ( ( foundCount == 0 ) && ( sign == 0 ) ) || ( ( foundCount == 1 ) && ( sign != 0 ) ) )) {
+							firstDigitIndex = i;
+						}
+						
+						 ++ foundCount;
+						lastDigitIndex = i;
+						previous = c;
+					}
+					label1: {};
+				}
+				
+				if (( firstDigitIndex <= lastDigitIndex )) {
+					string digits = global::haxe.lang.StringExt.substring(x, firstDigitIndex, new global::haxe.lang.Null<int>(( lastDigitIndex + 1 ), true));
+					try {
+						return new global::haxe.lang.Null<int>(( (( (( sign == -1 )) ? (-1) : (1) )) * global::System.Convert.ToInt32(((string) (digits) ), ((int) (@base) )) ), true);
+					}
+					catch (global::System.FormatException e){
+						global::haxe.lang.Exceptions.exception = e;
+						return default(global::haxe.lang.Null<int>);
+					}
+					
+					
+				}
+				
+				return default(global::haxe.lang.Null<int>);
+			}
+		}
+		
+		
+		public static double parseFloat(string x) {
+			unchecked {
+				if (( x == null )) {
+					return global::haxe.root.Math.NaN;
+				}
+				
+				x = x.TrimStart();
+				bool found = false;
+				bool hasDot = false;
+				bool hasSign = false;
+				bool hasE = false;
+				bool hasESign = false;
+				bool hasEData = false;
+				int i = -1;
+				while ((  ++ i < x.Length )) {
+					int chr = ((int) (((global::System.String) (x) )[i]) );
+					if (( ( chr >= 48 ) && ( chr <= 57 ) )) {
+						if (hasE) {
+							hasEData = true;
+						}
+						
+						found = true;
+					}
+					else {
+						switch (chr) {
+							case 43:
+							case 45:
+							{
+								if ((  ! (found)  &&  ! (hasSign)  )) {
+									hasSign = true;
+								}
+								else if (( ( ( found &&  ! (hasESign)  ) && hasE ) &&  ! (hasEData)  )) {
+									hasESign = true;
+								}
+								else {
+									goto label1;
+								}
+								
+								break;
+							}
+							
+							
+							case 46:
+							{
+								if ( ! (hasDot) ) {
+									hasDot = true;
+								}
+								else {
+									goto label1;
+								}
+								
+								break;
+							}
+							
+							
+							case 69:
+							case 101:
+							{
+								if ( ! (hasE) ) {
+									hasE = true;
+								}
+								else {
+									goto label1;
+								}
+								
+								break;
+							}
+							
+							
+							default:
+							{
+								goto label1;
+							}
+							
+						}
+						
+					}
+					
+				}
+				label1: {};
+				if (( hasE &&  ! (hasEData)  )) {
+					 -- i;
+					if (hasESign) {
+						 -- i;
+					}
+					
+				}
+				
+				if (( i != x.Length )) {
+					x = global::haxe.lang.StringExt.substr(x, 0, new global::haxe.lang.Null<int>(i, true));
+				}
+				
+				try {
+					return global::System.Double.Parse(((string) (x) ), ((global::System.IFormatProvider) (global::System.Globalization.CultureInfo.InvariantCulture) ));
+				}
+				catch (global::System.Exception catchallException){
+					global::haxe.lang.Exceptions.exception = catchallException;
+					object e = ( (( catchallException is global::haxe.lang.HaxeException )) ? (((global::haxe.lang.HaxeException) (catchallException) ).obj) : ((object) (catchallException) ) );
+					return global::haxe.root.Math.NaN;
+				}
+				
+				
+			}
+		}
+		
+		
+		public static int random(int x) {
+			if (( x <= 0 )) {
+				return 0;
+			}
+			
+			return global::haxe.root.Math.rand.Next(((int) (x) ));
+		}
+		
+		
 	}
 }
 

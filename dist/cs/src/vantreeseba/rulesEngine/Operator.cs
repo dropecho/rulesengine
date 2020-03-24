@@ -20,6 +20,8 @@ namespace vantreeseba.rulesEngine {
 		
 		public static readonly global::vantreeseba.rulesEngine.Operator NEQ = new global::vantreeseba.rulesEngine.Operator_NEQ();
 		
+		protected static readonly string[] __hx_constructs = new string[]{"GT", "GTE", "LT", "LTE", "EQ", "NEQ"};
+		
 	}
 }
 

@@ -29,7 +29,7 @@ end defines
 begin defines_data
 NET_20=1
 cs=1
-dce=full
+dce=no
 dll_import=1
 haxe=4.0.5
 haxe3=1
@@ -59,6 +59,8 @@ M System.Runtime.Remoting.Contexts.IContextProperty
 M System.Runtime.Serialization.SerializationInfo
 M cs.system.globalization.DigitShapes
 M cs.NativeArray
+C cs._NativeArray.NativeArrayIterator
+C cs._NativeArray.NativeArrayIterator
 M cs.Boot
 C cs.Boot
 M System.Runtime.InteropServices.StructLayoutAttribute
@@ -85,6 +87,7 @@ M System.Collections.Generic.IEnumerable`1
 M cs.system.reflection.ResourceLocation
 M cs.system.security.cryptography.x509certificates.X509KeyStorageFlags
 M EnumValue
+C haxe.root.EnumValue
 M cs.system.StringComparison
 M cs.system.threading.ApartmentState
 M cs.system.reflection.AssemblyNameFlags
@@ -117,6 +120,11 @@ M cs.system.Predicate_1
 M System.Reflection.MethodBase
 M System.IEquatable`1
 M System.IConvertible
+M haxe.ds.BalancedTree
+C haxe.ds.BalancedTree
+C haxe.ds.BalancedTree
+C haxe.ds.TreeNode
+C haxe.ds.TreeNode
 M System.MissingMemberException
 M cs.Ref
 M System.Reflection.ConstructorInfo
@@ -143,6 +151,7 @@ M cs.system.reflection.BindingFlags
 M cs.system.reflection.ParameterAttributes
 M System.Security.SecureString
 M haxe.Int32
+C haxe._Int32.Int32_Impl_
 M System.IComparable
 M cs.system.AppDomainManagerInitializationOptions
 M cs.system.globalization.CalendarAlgorithmType
@@ -181,15 +190,32 @@ M System.Reflection.Emit.StringToken
 M System.Security.AccessControl.AccessRule
 M System.Reflection.ParameterInfo
 M haxe.ds.ReadOnlyArray
+C haxe.ds._ReadOnlyArray.ReadOnlyArray_Impl_
 M System.LocalDataStoreSlot
 M System.IAsyncResult
 M System.NullReferenceException
 M cs.system.reflection.ModuleResolveEventHandler
 M Type
+E haxe.root.ValueType
+C haxe.root.ValueType
+C haxe.root.ValueType_TNull
+C haxe.root.ValueType_TInt
+C haxe.root.ValueType_TFloat
+C haxe.root.ValueType_TBool
+C haxe.root.ValueType_TObject
+C haxe.root.ValueType_TFunction
+C haxe.root.ValueType_TClass
+C haxe.root.ValueType_TEnum
+C haxe.root.ValueType_TUnknown
 C haxe.root.Type
 M System.AssemblyLoadEventArgs
 M System.Globalization.DateTimeFormatInfo
 M haxe.ds.HashMap
+C haxe.ds._HashMap.HashMap_Impl_
+C haxe.ds._HashMap.HashMapData
+C haxe.ds._HashMap.HashMapData
+M haxe.SysTools
+C haxe.SysTools
 M cs.system.reflection.MethodAttributes
 M System.Text.RegularExpressions.Capture
 M cs.system.reflection.emit.OpCodeType
@@ -222,10 +248,13 @@ M System.Collections.IDictionary
 M cs.system.runtime.interopservices.CharSet
 M cs.system.threading.ThreadStart
 M System.Security.Policy.CodeGroup
+M StringTools
+C haxe.root.StringTools
 M cs.system.collections.ArrayList
 M System.Text.RegularExpressions.Group
 M cs.system.security.accesscontrol.NativeObjectSecurity
 M haxe.Int64
+C haxe._Int64.Int64_Impl_
 M cs.system.reflection.Binder
 M System.Reflection.ExceptionHandlingClause
 M cs.types.Char16
@@ -263,6 +292,7 @@ M System.RuntimeFieldHandle
 M System.Runtime.InteropServices._Module
 M cs.system.runtime.remoting.contexts.CrossContextDelegate
 M haxe.ds.Vector
+C haxe.ds._Vector.Vector_Impl_
 M System.Type
 M cs.system.reflection.emit.AssemblyBuilderAccess
 M System.Security.Permissions.StrongNamePublicKeyBlob
@@ -288,6 +318,12 @@ M cs.system.reflection.MethodImplAttributes
 M System.Threading.Thread
 M System.Text.RegularExpressions.RegexRunnerFactory
 M haxe.ds.ObjectMap
+C haxe.ds.ObjectMap
+C haxe.ds.ObjectMap
+C haxe.ds._ObjectMap.ObjectMapKeyIterator
+C haxe.ds._ObjectMap.ObjectMapKeyIterator
+C haxe.ds._ObjectMap.ObjectMapValueIterator
+C haxe.ds._ObjectMap.ObjectMapValueIterator
 M System.Runtime.InteropServices._FieldInfo
 M cs.system.text.regularexpressions.RegexOptions
 M System.Collections.IEnumerator
@@ -298,6 +334,7 @@ M cs.system.security.policy.Evidence
 M System.Reflection.MemberInfo
 M cs.system.StringSplitOptions
 M cs.Flags
+C cs._Flags.EnumUnderlying
 M cs.types.Int8
 M cs.system.globalization.CompareOptions
 M System.Reflection.Emit.GenericTypeParameterBuilder
@@ -318,6 +355,10 @@ M System.Security.Policy.StrongName
 M haxe.ds.StringMap
 C haxe.ds.StringMap
 C haxe.ds.StringMap
+C haxe.ds._StringMap.StringMapKeyIterator
+C haxe.ds._StringMap.StringMapKeyIterator
+C haxe.ds._StringMap.StringMapValueIterator
+C haxe.ds._StringMap.StringMapValueIterator
 M cs.system.io.FileStream
 M System.MarshalByRefObject
 M System.ModuleHandle
@@ -325,6 +366,9 @@ M cs.types.UInt16
 M System.Security.Principal.IPrincipal
 M System.Runtime.InteropServices._Type
 M cs.system.io.FileMode
+M haxe.ds.WeakMap
+C haxe.ds.WeakMap
+C haxe.ds.WeakMap
 M System.Runtime.InteropServices._ParameterBuilder
 M System.Runtime.InteropServices._ParameterInfo
 M cs.system.EventHandler
@@ -367,6 +411,8 @@ M cs.system.reflection.emit.FlowControl
 M System.Runtime.Serialization.SerializationEntry
 M System.String
 M System.Reflection.MethodInfo
+M haxe.iterators.StringIterator
+C haxe.iterators.StringIterator
 M haxe.EnumTools
 M cs.system.threading.ThreadState
 M System.Reflection.PropertyInfo
@@ -390,9 +436,13 @@ M System.Security.Policy.StrongNameMembershipCondition
 M System.Collections.Generic.ICollection`1
 M cs.system.security.policy.TrustManagerUIContext
 M System.Reflection.IReflect
+M EReg
+C haxe.root.EReg
 M System.Reflection.Emit.AssemblyBuilder
 M System.Math
 M cs.system.security.policy.PolicyStatementAttribute
+M haxe.iterators.StringIteratorUnicode
+C haxe.iterators.StringIteratorUnicode
 M System.Attribute
 M System.IO.Stream
 M System.Security.AccessControl.ObjectSecurity
@@ -414,9 +464,15 @@ C haxe.lang.HaxeException
 M System.Runtime.InteropServices._ConstructorInfo
 M System.Text.RegularExpressions.Match
 M System.Collections.ReadOnlyCollectionBase
+M Math
+C haxe.root.Math
+M IntIterator
+C haxe.root.IntIterator
 M System.IAppDomainSetup
 M System.Reflection.LocalVariableInfo
 M cs.system.reflection.emit.StackBehaviour
+M haxe.iterators.StringKeyValueIterator
+C haxe.iterators.StringKeyValueIterator
 M vantreeseba.rulesEngine.RuleResult
 C vantreeseba.rulesEngine.RuleResult
 M System.Runtime.Remoting.Messaging.IMessageSink
@@ -430,6 +486,7 @@ M System.Object
 M System.Runtime.Serialization.SerializationInfoEnumerator
 M System.RuntimeTypeHandle
 M haxe.ds.Map
+C haxe.ds._Map.Map_Impl_
 M cs.system.reflection.MemberFilter
 M System.Reflection.MethodBody
 M System.Random
@@ -450,6 +507,9 @@ M System.Threading.AsyncFlowControl
 M Microsoft.Win32.SafeHandles.SafeWaitHandle
 M cs.system.reflection.emit.OperandType
 M System.Security.Policy.ApplicationTrust
+M haxe.iterators.MapKeyValueIterator
+C haxe.iterators.MapKeyValueIterator
+C haxe.iterators.MapKeyValueIterator
 M System.Runtime.InteropServices._Activator
 M cs.system.security.accesscontrol.FileSystemRights
 M cs.system.globalization.TextInfo
@@ -459,6 +519,8 @@ M System.EventArgs
 M cs.system.globalization.NumberStyles
 M System.Runtime.InteropServices._FieldBuilder
 M cs.system.configuration.assemblies.AssemblyVersionCompatibility
+M haxe.lang.DceNo
+C haxe.lang.DceNo
 M cs.system.AppDomainInitializer
 M System.Decimal
 M cs.system.security.SecurityElement
@@ -466,6 +528,11 @@ M Enum
 M System.IntPtr
 M System.Runtime.Remoting.IRemotingTypeInfo
 M System.Runtime.Remoting.Messaging.IMessageCtrl
+M haxe.ds.EnumValueMap
+C haxe.ds.EnumValueMap
+C haxe.ds.EnumValueMap
+M haxe.Int64Helper
+C haxe.Int64Helper
 M System.Reflection.Emit.LocalBuilder
 M System.Exception
 M cs.system.Action_1
@@ -484,6 +551,7 @@ M System.Globalization.CompareInfo
 M System.Runtime.InteropServices._EventInfo
 M cs.system.reflection.emit.PEFileKinds
 M UInt
+C haxe.root.UInt
 M cs.system.globalization.CalendarWeekRule
 M cs.system.reflection.ImageFileMachine
 M System.Reflection.Emit.FieldBuilder
@@ -500,6 +568,13 @@ M cs.system.Comparison_1
 M System.Runtime.Remoting.IEnvoyInfo
 M cs.system.reflection.EventInfo
 M System.Runtime.InteropServices._MemberInfo
+M haxe.ds.IntMap
+C haxe.ds.IntMap
+C haxe.ds.IntMap
+C haxe.ds._IntMap.IntMapKeyIterator
+C haxe.ds._IntMap.IntMapKeyIterator
+C haxe.ds._IntMap.IntMapValueIterator
+C haxe.ds._IntMap.IntMapValueIterator
 M cs.types.UInt64
 M cs.system.ActivationContext
 M cs.system.reflection.ExceptionHandlingClauseOptions
@@ -507,6 +582,8 @@ M System.Security.Policy.IConstantMembershipCondition
 M System.AppDomainSetup
 M System.Int64
 M System.Runtime.Remoting.IChannelInfo
+M StringBuf
+C haxe.root.StringBuf
 end modules
 begin resources
 end resources

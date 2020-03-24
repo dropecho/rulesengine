@@ -3,41 +3,41 @@ using haxe.root;
 
 #pragma warning disable 109, 114, 219, 429, 168, 162
 namespace haxe.ds {
-	public class StringMap<T> : global::haxe.lang.HxObject, global::haxe.ds.StringMap, global::haxe.IMap<string, T> {
+	public class ObjectMap<K, V> : global::haxe.lang.HxObject, global::haxe.ds.ObjectMap, global::haxe.IMap<K, V> {
 		
-		public StringMap(global::haxe.lang.EmptyObject empty) {
+		public ObjectMap(global::haxe.lang.EmptyObject empty) {
 		}
 		
 		
-		public StringMap() {
-			global::haxe.ds.StringMap<object>.__hx_ctor_haxe_ds_StringMap<T>(((global::haxe.ds.StringMap<T>) (this) ));
+		public ObjectMap() {
+			global::haxe.ds.ObjectMap<object, object>.__hx_ctor_haxe_ds_ObjectMap<K, V>(((global::haxe.ds.ObjectMap<K, V>) (this) ));
 		}
 		
 		
-		protected static void __hx_ctor_haxe_ds_StringMap<T_c>(global::haxe.ds.StringMap<T_c> __hx_this) {
+		protected static void __hx_ctor_haxe_ds_ObjectMap<K_c, V_c>(global::haxe.ds.ObjectMap<K_c, V_c> __hx_this) {
 			unchecked {
 				__hx_this.cachedIndex = -1;
 			}
 		}
 		
 		
-		public static object __hx_cast<T_c_c>(global::haxe.ds.StringMap me) {
-			return ( (( me != null )) ? (me.haxe_ds_StringMap_cast<T_c_c>()) : default(object) );
+		public static object __hx_cast<K_c_c, V_c_c>(global::haxe.ds.ObjectMap me) {
+			return ( (( me != null )) ? (me.haxe_ds_ObjectMap_cast<K_c_c, V_c_c>()) : default(object) );
 		}
 		
 		
-		global::haxe.IMap<string, T> global::haxe.IMap<string, T>.copy() {
-			return ((global::haxe.IMap<string, T>) (this.copy()) );
+		global::haxe.IMap<K, V> global::haxe.IMap<K, V>.copy() {
+			return ((global::haxe.IMap<K, V>) (this.copy()) );
 		}
 		
 		
-		public virtual object haxe_ds_StringMap_cast<T_c>() {
+		public virtual object haxe_ds_ObjectMap_cast<K_c, V_c>() {
 			unchecked {
-				if (global::haxe.lang.Runtime.eq(typeof(T), typeof(T_c))) {
+				if (( global::haxe.lang.Runtime.eq(typeof(K), typeof(K_c)) && global::haxe.lang.Runtime.eq(typeof(V), typeof(V_c)) )) {
 					return this;
 				}
 				
-				global::haxe.ds.StringMap<T_c> new_me = new global::haxe.ds.StringMap<T_c>(global::haxe.lang.EmptyObject.EMPTY);
+				global::haxe.ds.ObjectMap<K_c, V_c> new_me = new global::haxe.ds.ObjectMap<K_c, V_c>(global::haxe.lang.EmptyObject.EMPTY);
 				global::haxe.root.Array<string> fields = global::haxe.root.Reflect.fields(this);
 				int i = 0;
 				while (( i < fields.length )) {
@@ -46,12 +46,12 @@ namespace haxe.ds {
 						case "vals":
 						{
 							if (( this.vals != null )) {
-								T_c[] __temp_new_arr1 = new T_c[this.vals.Length];
+								V_c[] __temp_new_arr1 = new V_c[this.vals.Length];
 								int __temp_i2 = -1;
 								while ((  ++ __temp_i2 < this.vals.Length )) {
 									object __temp_obj3 = ((object) (this.vals[__temp_i2]) );
 									if (( __temp_obj3 != null )) {
-										__temp_new_arr1[__temp_i2] = global::haxe.lang.Runtime.genericCast<T_c>(__temp_obj3);
+										__temp_new_arr1[__temp_i2] = global::haxe.lang.Runtime.genericCast<V_c>(__temp_obj3);
 									}
 									
 								}
@@ -60,6 +60,29 @@ namespace haxe.ds {
 							}
 							else {
 								new_me.vals = null;
+							}
+							
+							break;
+						}
+						
+						
+						case "_keys":
+						{
+							if (( this._keys != null )) {
+								K_c[] __temp_new_arr4 = new K_c[this._keys.Length];
+								int __temp_i5 = -1;
+								while ((  ++ __temp_i5 < this._keys.Length )) {
+									object __temp_obj6 = ((object) (this._keys[__temp_i5]) );
+									if (( __temp_obj6 != null )) {
+										__temp_new_arr4[__temp_i5] = global::haxe.lang.Runtime.genericCast<K_c>(__temp_obj6);
+									}
+									
+								}
+								
+								new_me._keys = __temp_new_arr4;
+							}
+							else {
+								new_me._keys = null;
 							}
 							
 							break;
@@ -82,15 +105,15 @@ namespace haxe.ds {
 		
 		
 		public virtual object haxe_IMap_cast<K_c, V_c>() {
-			return this.haxe_ds_StringMap_cast<T>();
+			return this.haxe_ds_ObjectMap_cast<K, V>();
 		}
 		
 		
 		public int[] hashes;
 		
-		public string[] _keys;
+		public K[] _keys;
 		
-		public T[] vals;
+		public V[] vals;
 		
 		public int nBuckets;
 		
@@ -100,11 +123,11 @@ namespace haxe.ds {
 		
 		public int upperBound;
 		
-		public string cachedKey;
+		public K cachedKey;
 		
 		public int cachedIndex;
 		
-		public virtual void @set(string key, T @value) {
+		public virtual void @set(K key, V @value) {
 			unchecked {
 				int x = default(int);
 				int k = default(int);
@@ -119,13 +142,13 @@ namespace haxe.ds {
 				}
 				
 				int[] hashes = this.hashes;
-				string[] keys = this._keys;
+				K[] keys = this._keys;
 				int[] hashes1 = hashes;
 				{
 					int mask = ( (( this.nBuckets == 0 )) ? (0) : (( this.nBuckets - 1 )) );
 					x = this.nBuckets;
 					int site = x;
-					int k1 = key.GetHashCode();
+					int k1 = ((object) (key) ).GetHashCode();
 					k1 = ( ( k1 + 2127912214 ) + (( k1 << 12 )) );
 					k1 = ( ( k1 ^ -949894596 ) ^ ( k1 >> 19 ) );
 					k1 = ( ( k1 + 374761393 ) + (( k1 << 5 )) );
@@ -155,7 +178,7 @@ namespace haxe.ds {
 						int flag = default(int);
 						while (true) {
 							flag = hashes1[i];
-							if ( ! (( ! ((( ( flag == 0 ) || ( ( flag == k ) && ( ((string) (this._keys[i]) ) == key ) ) ))) )) ) {
+							if ( ! (( ! ((( ( flag == 0 ) || ( ( flag == k ) && global::haxe.lang.Runtime.eq(global::haxe.lang.Runtime.genericCast<K>(this._keys[i]), key) ) ))) )) ) {
 								break;
 							}
 							
@@ -201,13 +224,13 @@ namespace haxe.ds {
 		}
 		
 		
-		public int lookup(string key) {
+		public int lookup(K key) {
 			unchecked {
 				if (( this.nBuckets != 0 )) {
 					int[] hashes = this.hashes;
-					string[] keys = this._keys;
+					K[] keys = this._keys;
 					int mask = ( this.nBuckets - 1 );
-					int k = key.GetHashCode();
+					int k = ((object) (key) ).GetHashCode();
 					k = ( ( k + 2127912214 ) + (( k << 12 )) );
 					k = ( ( k ^ -949894596 ) ^ ( k >> 19 ) );
 					k = ( ( k + 374761393 ) + (( k << 5 )) );
@@ -233,7 +256,7 @@ namespace haxe.ds {
 					int flag = default(int);
 					while (true) {
 						flag = hashes[i];
-						if ( ! ((( ( flag != 0 ) && (( ( ( flag == 1 ) || ( flag != k1 ) ) || ( ((string) (keys[i]) ) != key ) )) ))) ) {
+						if ( ! ((( ( flag != 0 ) && (( ( ( flag == 1 ) || ( flag != k1 ) ) || ( ! (global::haxe.lang.Runtime.eq(global::haxe.lang.Runtime.genericCast<K>(keys[i]), key)) ) )) ))) ) {
 							break;
 						}
 						
@@ -279,13 +302,13 @@ namespace haxe.ds {
 						int nfSize = newNBuckets;
 						newHash = new int[nfSize];
 						if (( this.nBuckets < newNBuckets )) {
-							string[] k = new string[newNBuckets];
+							K[] k = new K[newNBuckets];
 							if (( this._keys != null )) {
 								global::System.Array.Copy(((global::System.Array) (this._keys) ), ((int) (0) ), ((global::System.Array) (k) ), ((int) (0) ), ((int) (this.nBuckets) ));
 							}
 							
 							this._keys = k;
-							T[] v = new T[newNBuckets];
+							V[] v = new V[newNBuckets];
 							if (( this.vals != null )) {
 								global::System.Array.Copy(((global::System.Array) (this.vals) ), ((int) (0) ), ((global::System.Array) (v) ), ((int) (0) ), ((int) (this.nBuckets) ));
 							}
@@ -298,21 +321,21 @@ namespace haxe.ds {
 				}
 				
 				if (( j != 0 )) {
-					this.cachedKey = null;
+					this.cachedKey = default(K);
 					this.cachedIndex = -1;
 					j = -1;
 					int nBuckets = this.nBuckets;
-					string[] _keys = this._keys;
-					T[] vals = this.vals;
+					K[] _keys = this._keys;
+					V[] vals = this.vals;
 					int[] hashes = this.hashes;
 					int newMask = ( newNBuckets - 1 );
 					while ((  ++ j < nBuckets )) {
 						int k1 = hashes[j];
 						if (( (( k1 & -2 )) != 0 )) {
-							string key = ((string) (_keys[j]) );
-							T val = global::haxe.lang.Runtime.genericCast<T>(vals[j]);
-							_keys[j] = null;
-							vals[j] = default(T);
+							K key = global::haxe.lang.Runtime.genericCast<K>(_keys[j]);
+							V val = global::haxe.lang.Runtime.genericCast<V>(vals[j]);
+							_keys[j] = default(K);
+							vals[j] = default(V);
 							hashes[j] = 1;
 							while (true) {
 								int nProbes = 0;
@@ -333,13 +356,13 @@ namespace haxe.ds {
 								
 								if (tmp) {
 									{
-										string tmp1 = ((string) (_keys[i]) );
+										K tmp1 = global::haxe.lang.Runtime.genericCast<K>(_keys[i]);
 										_keys[i] = key;
 										key = tmp1;
 									}
 									
 									{
-										T tmp2 = global::haxe.lang.Runtime.genericCast<T>(vals[i]);
+										V tmp2 = global::haxe.lang.Runtime.genericCast<V>(vals[i]);
 										vals[i] = val;
 										val = tmp2;
 									}
@@ -360,13 +383,13 @@ namespace haxe.ds {
 					
 					if (( nBuckets > newNBuckets )) {
 						{
-							string[] k2 = new string[newNBuckets];
+							K[] k2 = new K[newNBuckets];
 							global::System.Array.Copy(((global::System.Array) (_keys) ), ((int) (0) ), ((global::System.Array) (k2) ), ((int) (0) ), ((int) (newNBuckets) ));
 							this._keys = k2;
 						}
 						
 						{
-							T[] v1 = new T[newNBuckets];
+							V[] v1 = new V[newNBuckets];
 							global::System.Array.Copy(((global::System.Array) (vals) ), ((int) (0) ), ((global::System.Array) (v1) ), ((int) (0) ), ((int) (newNBuckets) ));
 							this.vals = v1;
 						}
@@ -383,11 +406,11 @@ namespace haxe.ds {
 		}
 		
 		
-		public virtual global::haxe.lang.Null<T> @get(string key) {
+		public virtual global::haxe.lang.Null<V> @get(K key) {
 			unchecked {
 				int idx = -1;
 				bool tmp = default(bool);
-				if (( this.cachedKey == key )) {
+				if (global::haxe.lang.Runtime.eq(this.cachedKey, key)) {
 					idx = this.cachedIndex;
 					tmp = ( idx != -1 );
 				}
@@ -396,26 +419,26 @@ namespace haxe.ds {
 				}
 				
 				if (tmp) {
-					return new global::haxe.lang.Null<T>(global::haxe.lang.Runtime.genericCast<T>(this.vals[idx]), true);
+					return new global::haxe.lang.Null<V>(global::haxe.lang.Runtime.genericCast<V>(this.vals[idx]), true);
 				}
 				
 				idx = this.lookup(key);
 				if (( idx != -1 )) {
 					this.cachedKey = key;
 					this.cachedIndex = idx;
-					return new global::haxe.lang.Null<T>(global::haxe.lang.Runtime.genericCast<T>(this.vals[idx]), true);
+					return new global::haxe.lang.Null<V>(global::haxe.lang.Runtime.genericCast<V>(this.vals[idx]), true);
 				}
 				
-				return default(global::haxe.lang.Null<T>);
+				return default(global::haxe.lang.Null<V>);
 			}
 		}
 		
 		
-		public virtual T getDefault(string key, T def) {
+		public virtual V getDefault(K key, V def) {
 			unchecked {
 				int idx = -1;
 				bool tmp = default(bool);
-				if (( this.cachedKey == key )) {
+				if (global::haxe.lang.Runtime.eq(this.cachedKey, key)) {
 					idx = this.cachedIndex;
 					tmp = ( idx != -1 );
 				}
@@ -424,14 +447,14 @@ namespace haxe.ds {
 				}
 				
 				if (tmp) {
-					return global::haxe.lang.Runtime.genericCast<T>(this.vals[idx]);
+					return global::haxe.lang.Runtime.genericCast<V>(this.vals[idx]);
 				}
 				
 				idx = this.lookup(key);
 				if (( idx != -1 )) {
 					this.cachedKey = key;
 					this.cachedIndex = idx;
-					return global::haxe.lang.Runtime.genericCast<T>(this.vals[idx]);
+					return global::haxe.lang.Runtime.genericCast<V>(this.vals[idx]);
 				}
 				
 				return def;
@@ -439,11 +462,11 @@ namespace haxe.ds {
 		}
 		
 		
-		public virtual bool exists(string key) {
+		public virtual bool exists(K key) {
 			unchecked {
 				int idx = -1;
 				bool tmp = default(bool);
-				if (( this.cachedKey == key )) {
+				if (global::haxe.lang.Runtime.eq(this.cachedKey, key)) {
 					idx = this.cachedIndex;
 					tmp = ( idx != -1 );
 				}
@@ -467,11 +490,11 @@ namespace haxe.ds {
 		}
 		
 		
-		public virtual bool @remove(string key) {
+		public virtual bool @remove(K key) {
 			unchecked {
 				int idx = -1;
 				bool tmp = default(bool);
-				if (( this.cachedKey == key )) {
+				if (global::haxe.lang.Runtime.eq(this.cachedKey, key)) {
 					idx = this.cachedIndex;
 					tmp = ( idx != -1 );
 				}
@@ -487,13 +510,13 @@ namespace haxe.ds {
 					return false;
 				}
 				else {
-					if (( this.cachedKey == key )) {
+					if (global::haxe.lang.Runtime.eq(this.cachedKey, key)) {
 						this.cachedIndex = -1;
 					}
 					
 					this.hashes[idx] = 1;
-					this._keys[idx] = null;
-					this.vals[idx] = default(T);
+					this._keys[idx] = default(K);
+					this.vals[idx] = default(V);
 					 -- this.size;
 					return true;
 				}
@@ -502,27 +525,27 @@ namespace haxe.ds {
 		}
 		
 		
-		public object keys() {
-			return new global::haxe.ds._StringMap.StringMapKeyIterator<T>(((global::haxe.ds.StringMap<T>) (this) ));
+		public virtual object keys() {
+			return new global::haxe.ds._ObjectMap.ObjectMapKeyIterator<K, V>(((global::haxe.ds.ObjectMap<K, V>) (this) ));
 		}
 		
 		
-		public object iterator() {
-			return new global::haxe.ds._StringMap.StringMapValueIterator<T>(((global::haxe.ds.StringMap<T>) (this) ));
+		public virtual object iterator() {
+			return new global::haxe.ds._ObjectMap.ObjectMapValueIterator<K, V>(((global::haxe.ds.ObjectMap<K, V>) (this) ));
 		}
 		
 		
 		public object keyValueIterator() {
-			return new global::haxe.iterators.MapKeyValueIterator<string, T>(((global::haxe.IMap<string, T>) (this) ));
+			return new global::haxe.iterators.MapKeyValueIterator<K, V>(((global::haxe.IMap<K, V>) (this) ));
 		}
 		
 		
-		public virtual global::haxe.ds.StringMap<T> copy() {
-			global::haxe.ds.StringMap<T> copied = new global::haxe.ds.StringMap<T>();
+		public virtual global::haxe.ds.ObjectMap<K, V> copy() {
+			global::haxe.ds.ObjectMap<K, V> copied = new global::haxe.ds.ObjectMap<K, V>();
 			{
-				object key = ((object) (new global::haxe.ds._StringMap.StringMapKeyIterator<T>(((global::haxe.ds.StringMap<T>) (this) ))) );
+				object key = this.keys();
 				while (global::haxe.lang.Runtime.toBool(global::haxe.lang.Runtime.callField(key, "hasNext", 407283053, null))) {
-					string key1 = global::haxe.lang.Runtime.toString(global::haxe.lang.Runtime.callField(key, "next", 1224901875, null));
+					K key1 = global::haxe.lang.Runtime.genericCast<K>(global::haxe.lang.Runtime.callField(key, "next", 1224901875, null));
 					copied.@set(key1, (this.@get(key1)).@value);
 				}
 				
@@ -535,12 +558,12 @@ namespace haxe.ds {
 		public virtual string toString() {
 			global::System.Text.StringBuilder s_b = new global::System.Text.StringBuilder();
 			s_b.Append(((string) ("{") ));
-			object it = ((object) (new global::haxe.ds._StringMap.StringMapKeyIterator<T>(((global::haxe.ds.StringMap<T>) (this) ))) );
+			object it = this.keys();
 			{
 				object i = it;
 				while (global::haxe.lang.Runtime.toBool(global::haxe.lang.Runtime.callField(i, "hasNext", 407283053, null))) {
-					string i1 = global::haxe.lang.Runtime.toString(global::haxe.lang.Runtime.callField(i, "next", 1224901875, null));
-					s_b.Append(((string) (global::haxe.root.Std.@string(i1)) ));
+					K i1 = global::haxe.lang.Runtime.genericCast<K>(global::haxe.lang.Runtime.callField(i, "next", 1224901875, null));
+					s_b.Append(((string) (global::haxe.root.Std.@string(global::haxe.root.Std.@string(i1))) ));
 					s_b.Append(((string) (" => ") ));
 					s_b.Append(((string) (global::haxe.root.Std.@string(global::haxe.root.Std.@string((this.@get(i1)).toDynamic()))) ));
 					if (global::haxe.lang.Runtime.toBool(global::haxe.lang.Runtime.callField(it, "hasNext", 407283053, null))) {
@@ -565,7 +588,7 @@ namespace haxe.ds {
 				this.size = 0;
 				this.nOccupied = 0;
 				this.upperBound = 0;
-				this.cachedKey = null;
+				this.cachedKey = default(K);
 				this.cachedIndex = -1;
 			}
 		}
@@ -578,6 +601,13 @@ namespace haxe.ds {
 					{
 						this.cachedIndex = ((int) (@value) );
 						return @value;
+					}
+					
+					
+					case 1395555037:
+					{
+						this.cachedKey = global::haxe.lang.Runtime.genericCast<K>(((object) (@value) ));
+						return ((double) (global::haxe.lang.Runtime.toDouble(((object) (@value) ))) );
 					}
 					
 					
@@ -632,7 +662,7 @@ namespace haxe.ds {
 					
 					case 1395555037:
 					{
-						this.cachedKey = global::haxe.lang.Runtime.toString(@value);
+						this.cachedKey = global::haxe.lang.Runtime.genericCast<K>(@value);
 						return @value;
 					}
 					
@@ -667,14 +697,14 @@ namespace haxe.ds {
 					
 					case 1313416818:
 					{
-						this.vals = ((T[]) (@value) );
+						this.vals = ((V[]) (@value) );
 						return @value;
 					}
 					
 					
 					case 2048392659:
 					{
-						this._keys = ((string[]) (@value) );
+						this._keys = ((K[]) (@value) );
 						return @value;
 					}
 					
@@ -852,6 +882,12 @@ namespace haxe.ds {
 					}
 					
 					
+					case 1395555037:
+					{
+						return ((double) (global::haxe.lang.Runtime.toDouble(((object) (this.cachedKey) ))) );
+					}
+					
+					
 					case 2022294396:
 					{
 						return ((double) (this.upperBound) );
@@ -929,25 +965,25 @@ namespace haxe.ds {
 					
 					case 76061764:
 					{
-						return this.@remove(global::haxe.lang.Runtime.toString(dynargs[0]));
+						return this.@remove(global::haxe.lang.Runtime.genericCast<K>(dynargs[0]));
 					}
 					
 					
 					case 1071652316:
 					{
-						return this.exists(global::haxe.lang.Runtime.toString(dynargs[0]));
+						return this.exists(global::haxe.lang.Runtime.genericCast<K>(dynargs[0]));
 					}
 					
 					
 					case 1797611211:
 					{
-						return this.getDefault(global::haxe.lang.Runtime.toString(dynargs[0]), global::haxe.lang.Runtime.genericCast<T>(dynargs[1]));
+						return this.getDefault(global::haxe.lang.Runtime.genericCast<K>(dynargs[0]), global::haxe.lang.Runtime.genericCast<V>(dynargs[1]));
 					}
 					
 					
 					case 5144726:
 					{
-						return (this.@get(global::haxe.lang.Runtime.toString(dynargs[0]))).toDynamic();
+						return (this.@get(global::haxe.lang.Runtime.genericCast<K>(dynargs[0]))).toDynamic();
 					}
 					
 					
@@ -960,13 +996,13 @@ namespace haxe.ds {
 					
 					case 1639293562:
 					{
-						return this.lookup(global::haxe.lang.Runtime.toString(dynargs[0]));
+						return this.lookup(global::haxe.lang.Runtime.genericCast<K>(dynargs[0]));
 					}
 					
 					
 					case 5741474:
 					{
-						this.@set(global::haxe.lang.Runtime.toString(dynargs[0]), global::haxe.lang.Runtime.genericCast<T>(dynargs[1]));
+						this.@set(global::haxe.lang.Runtime.genericCast<K>(dynargs[0]), global::haxe.lang.Runtime.genericCast<V>(dynargs[1]));
 						break;
 					}
 					
@@ -1009,20 +1045,14 @@ namespace haxe.ds {
 
 #pragma warning disable 109, 114, 219, 429, 168, 162
 namespace haxe.ds {
-	[global::haxe.lang.GenericInterface(typeof(global::haxe.ds.StringMap<object>))]
-	public interface StringMap : global::haxe.lang.IHxObject, global::haxe.lang.IGenericObject {
+	[global::haxe.lang.GenericInterface(typeof(global::haxe.ds.ObjectMap<object, object>))]
+	public interface ObjectMap : global::haxe.lang.IHxObject, global::haxe.lang.IGenericObject {
 		
-		object haxe_ds_StringMap_cast<T_c>();
+		object haxe_ds_ObjectMap_cast<K_c, V_c>();
 		
 		object haxe_IMap_cast<K_c, V_c>();
 		
-		int lookup(string key);
-		
 		void resize(int newNBuckets);
-		
-		bool exists(string key);
-		
-		bool @remove(string key);
 		
 		object keys();
 		
@@ -1040,36 +1070,36 @@ namespace haxe.ds {
 
 
 #pragma warning disable 109, 114, 219, 429, 168, 162
-namespace haxe.ds._StringMap {
-	public sealed class StringMapKeyIterator<T> : global::haxe.lang.HxObject, global::haxe.ds._StringMap.StringMapKeyIterator {
+namespace haxe.ds._ObjectMap {
+	public sealed class ObjectMapKeyIterator<T, V> : global::haxe.lang.HxObject, global::haxe.ds._ObjectMap.ObjectMapKeyIterator {
 		
-		public StringMapKeyIterator(global::haxe.lang.EmptyObject empty) {
+		public ObjectMapKeyIterator(global::haxe.lang.EmptyObject empty) {
 		}
 		
 		
-		public StringMapKeyIterator(global::haxe.ds.StringMap<T> m) {
-			global::haxe.ds._StringMap.StringMapKeyIterator<object>.__hx_ctor_haxe_ds__StringMap_StringMapKeyIterator<T>(((global::haxe.ds._StringMap.StringMapKeyIterator<T>) (this) ), ((global::haxe.ds.StringMap<T>) (m) ));
+		public ObjectMapKeyIterator(global::haxe.ds.ObjectMap<T, V> m) {
+			global::haxe.ds._ObjectMap.ObjectMapKeyIterator<object, object>.__hx_ctor_haxe_ds__ObjectMap_ObjectMapKeyIterator<T, V>(((global::haxe.ds._ObjectMap.ObjectMapKeyIterator<T, V>) (this) ), ((global::haxe.ds.ObjectMap<T, V>) (m) ));
 		}
 		
 		
-		private static void __hx_ctor_haxe_ds__StringMap_StringMapKeyIterator<T_c>(global::haxe.ds._StringMap.StringMapKeyIterator<T_c> __hx_this, global::haxe.ds.StringMap<T_c> m) {
-			__hx_this.m = m;
+		private static void __hx_ctor_haxe_ds__ObjectMap_ObjectMapKeyIterator<T_c, V_c>(global::haxe.ds._ObjectMap.ObjectMapKeyIterator<T_c, V_c> __hx_this, global::haxe.ds.ObjectMap<T_c, V_c> m) {
 			__hx_this.i = 0;
+			__hx_this.m = m;
 			__hx_this.len = m.nBuckets;
 		}
 		
 		
-		public static object __hx_cast<T_c_c>(global::haxe.ds._StringMap.StringMapKeyIterator me) {
-			return ( (( me != null )) ? (me.haxe_ds__StringMap_StringMapKeyIterator_cast<T_c_c>()) : default(object) );
+		public static object __hx_cast<T_c_c, V_c_c>(global::haxe.ds._ObjectMap.ObjectMapKeyIterator me) {
+			return ( (( me != null )) ? (me.haxe_ds__ObjectMap_ObjectMapKeyIterator_cast<T_c_c, V_c_c>()) : default(object) );
 		}
 		
 		
-		public object haxe_ds__StringMap_StringMapKeyIterator_cast<T_c>() {
-			if (global::haxe.lang.Runtime.eq(typeof(T), typeof(T_c))) {
+		public object haxe_ds__ObjectMap_ObjectMapKeyIterator_cast<T_c, V_c>() {
+			if (( global::haxe.lang.Runtime.eq(typeof(T), typeof(T_c)) && global::haxe.lang.Runtime.eq(typeof(V), typeof(V_c)) )) {
 				return this;
 			}
 			
-			global::haxe.ds._StringMap.StringMapKeyIterator<T_c> new_me = new global::haxe.ds._StringMap.StringMapKeyIterator<T_c>(((global::haxe.lang.EmptyObject) (global::haxe.lang.EmptyObject.EMPTY) ));
+			global::haxe.ds._ObjectMap.ObjectMapKeyIterator<T_c, V_c> new_me = new global::haxe.ds._ObjectMap.ObjectMapKeyIterator<T_c, V_c>(((global::haxe.lang.EmptyObject) (global::haxe.lang.EmptyObject.EMPTY) ));
 			global::haxe.root.Array<string> fields = global::haxe.root.Reflect.fields(this);
 			int i = 0;
 			while (( i < fields.length )) {
@@ -1081,273 +1111,7 @@ namespace haxe.ds._StringMap {
 		}
 		
 		
-		public global::haxe.ds.StringMap<T> m;
-		
-		public int i;
-		
-		public int len;
-		
-		public bool hasNext() {
-			unchecked {
-				{
-					int _g = this.i;
-					int _g1 = this.len;
-					while (( _g < _g1 )) {
-						int j = _g++;
-						if (( (( this.m.hashes[j] & -2 )) != 0 )) {
-							this.i = j;
-							return true;
-						}
-						
-					}
-					
-				}
-				
-				return false;
-			}
-		}
-		
-		
-		public string next() {
-			string ret = ((string) (this.m._keys[this.i]) );
-			this.m.cachedIndex = this.i;
-			this.m.cachedKey = ret;
-			this.i++;
-			return ret;
-		}
-		
-		
-		public override double __hx_setField_f(string field, int hash, double @value, bool handleProperties) {
-			unchecked {
-				switch (hash) {
-					case 5393365:
-					{
-						this.len = ((int) (@value) );
-						return @value;
-					}
-					
-					
-					case 105:
-					{
-						this.i = ((int) (@value) );
-						return @value;
-					}
-					
-					
-					default:
-					{
-						return base.__hx_setField_f(field, hash, @value, handleProperties);
-					}
-					
-				}
-				
-			}
-		}
-		
-		
-		public override object __hx_setField(string field, int hash, object @value, bool handleProperties) {
-			unchecked {
-				switch (hash) {
-					case 5393365:
-					{
-						this.len = ((int) (global::haxe.lang.Runtime.toInt(@value)) );
-						return @value;
-					}
-					
-					
-					case 105:
-					{
-						this.i = ((int) (global::haxe.lang.Runtime.toInt(@value)) );
-						return @value;
-					}
-					
-					
-					case 109:
-					{
-						this.m = ((global::haxe.ds.StringMap<T>) (global::haxe.ds.StringMap<object>.__hx_cast<T>(((global::haxe.ds.StringMap) (@value) ))) );
-						return @value;
-					}
-					
-					
-					default:
-					{
-						return base.__hx_setField(field, hash, @value, handleProperties);
-					}
-					
-				}
-				
-			}
-		}
-		
-		
-		public override object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties) {
-			unchecked {
-				switch (hash) {
-					case 1224901875:
-					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(this, "next", 1224901875)) );
-					}
-					
-					
-					case 407283053:
-					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(this, "hasNext", 407283053)) );
-					}
-					
-					
-					case 5393365:
-					{
-						return this.len;
-					}
-					
-					
-					case 105:
-					{
-						return this.i;
-					}
-					
-					
-					case 109:
-					{
-						return this.m;
-					}
-					
-					
-					default:
-					{
-						return base.__hx_getField(field, hash, throwErrors, isCheck, handleProperties);
-					}
-					
-				}
-				
-			}
-		}
-		
-		
-		public override double __hx_getField_f(string field, int hash, bool throwErrors, bool handleProperties) {
-			unchecked {
-				switch (hash) {
-					case 5393365:
-					{
-						return ((double) (this.len) );
-					}
-					
-					
-					case 105:
-					{
-						return ((double) (this.i) );
-					}
-					
-					
-					default:
-					{
-						return base.__hx_getField_f(field, hash, throwErrors, handleProperties);
-					}
-					
-				}
-				
-			}
-		}
-		
-		
-		public override object __hx_invokeField(string field, int hash, object[] dynargs) {
-			unchecked {
-				switch (hash) {
-					case 1224901875:
-					{
-						return this.next();
-					}
-					
-					
-					case 407283053:
-					{
-						return this.hasNext();
-					}
-					
-					
-					default:
-					{
-						return base.__hx_invokeField(field, hash, dynargs);
-					}
-					
-				}
-				
-			}
-		}
-		
-		
-		public override void __hx_getFields(global::haxe.root.Array<string> baseArr) {
-			baseArr.push("len");
-			baseArr.push("i");
-			baseArr.push("m");
-			base.__hx_getFields(baseArr);
-		}
-		
-		
-	}
-}
-
-
-
-#pragma warning disable 109, 114, 219, 429, 168, 162
-namespace haxe.ds._StringMap {
-	[global::haxe.lang.GenericInterface(typeof(global::haxe.ds._StringMap.StringMapKeyIterator<object>))]
-	public interface StringMapKeyIterator : global::haxe.lang.IHxObject, global::haxe.lang.IGenericObject {
-		
-		object haxe_ds__StringMap_StringMapKeyIterator_cast<T_c>();
-		
-		bool hasNext();
-		
-		string next();
-		
-	}
-}
-
-
-
-#pragma warning disable 109, 114, 219, 429, 168, 162
-namespace haxe.ds._StringMap {
-	public sealed class StringMapValueIterator<T> : global::haxe.lang.HxObject, global::haxe.ds._StringMap.StringMapValueIterator {
-		
-		public StringMapValueIterator(global::haxe.lang.EmptyObject empty) {
-		}
-		
-		
-		public StringMapValueIterator(global::haxe.ds.StringMap<T> m) {
-			global::haxe.ds._StringMap.StringMapValueIterator<object>.__hx_ctor_haxe_ds__StringMap_StringMapValueIterator<T>(((global::haxe.ds._StringMap.StringMapValueIterator<T>) (this) ), ((global::haxe.ds.StringMap<T>) (m) ));
-		}
-		
-		
-		private static void __hx_ctor_haxe_ds__StringMap_StringMapValueIterator<T_c>(global::haxe.ds._StringMap.StringMapValueIterator<T_c> __hx_this, global::haxe.ds.StringMap<T_c> m) {
-			__hx_this.m = m;
-			__hx_this.i = 0;
-			__hx_this.len = m.nBuckets;
-		}
-		
-		
-		public static object __hx_cast<T_c_c>(global::haxe.ds._StringMap.StringMapValueIterator me) {
-			return ( (( me != null )) ? (me.haxe_ds__StringMap_StringMapValueIterator_cast<T_c_c>()) : default(object) );
-		}
-		
-		
-		public object haxe_ds__StringMap_StringMapValueIterator_cast<T_c>() {
-			if (global::haxe.lang.Runtime.eq(typeof(T), typeof(T_c))) {
-				return this;
-			}
-			
-			global::haxe.ds._StringMap.StringMapValueIterator<T_c> new_me = new global::haxe.ds._StringMap.StringMapValueIterator<T_c>(((global::haxe.lang.EmptyObject) (global::haxe.lang.EmptyObject.EMPTY) ));
-			global::haxe.root.Array<string> fields = global::haxe.root.Reflect.fields(this);
-			int i = 0;
-			while (( i < fields.length )) {
-				string field = fields[i++];
-				global::haxe.root.Reflect.setField(new_me, field, global::haxe.root.Reflect.field(this, field));
-			}
-			
-			return new_me;
-		}
-		
-		
-		public global::haxe.ds.StringMap<T> m;
+		public global::haxe.ds.ObjectMap<T, V> m;
 		
 		public int i;
 		
@@ -1375,7 +1139,13 @@ namespace haxe.ds._StringMap {
 		
 		
 		public T next() {
-			return global::haxe.lang.Runtime.genericCast<T>(this.m.vals[this.i++]);
+			unchecked {
+				T ret = global::haxe.lang.Runtime.genericCast<T>(this.m._keys[this.i]);
+				this.m.cachedIndex = this.i;
+				this.m.cachedKey = ret;
+				this.i += 1;
+				return ret;
+			}
 		}
 		
 		
@@ -1426,7 +1196,7 @@ namespace haxe.ds._StringMap {
 					
 					case 109:
 					{
-						this.m = ((global::haxe.ds.StringMap<T>) (global::haxe.ds.StringMap<object>.__hx_cast<T>(((global::haxe.ds.StringMap) (@value) ))) );
+						this.m = ((global::haxe.ds.ObjectMap<T, V>) (global::haxe.ds.ObjectMap<object, object>.__hx_cast<T, V>(((global::haxe.ds.ObjectMap) (@value) ))) );
 						return @value;
 					}
 					
@@ -1552,11 +1322,275 @@ namespace haxe.ds._StringMap {
 
 
 #pragma warning disable 109, 114, 219, 429, 168, 162
-namespace haxe.ds._StringMap {
-	[global::haxe.lang.GenericInterface(typeof(global::haxe.ds._StringMap.StringMapValueIterator<object>))]
-	public interface StringMapValueIterator : global::haxe.lang.IHxObject, global::haxe.lang.IGenericObject {
+namespace haxe.ds._ObjectMap {
+	[global::haxe.lang.GenericInterface(typeof(global::haxe.ds._ObjectMap.ObjectMapKeyIterator<object, object>))]
+	public interface ObjectMapKeyIterator : global::haxe.lang.IHxObject, global::haxe.lang.IGenericObject {
 		
-		object haxe_ds__StringMap_StringMapValueIterator_cast<T_c>();
+		object haxe_ds__ObjectMap_ObjectMapKeyIterator_cast<T_c, V_c>();
+		
+		bool hasNext();
+		
+	}
+}
+
+
+
+#pragma warning disable 109, 114, 219, 429, 168, 162
+namespace haxe.ds._ObjectMap {
+	public sealed class ObjectMapValueIterator<K, T> : global::haxe.lang.HxObject, global::haxe.ds._ObjectMap.ObjectMapValueIterator {
+		
+		public ObjectMapValueIterator(global::haxe.lang.EmptyObject empty) {
+		}
+		
+		
+		public ObjectMapValueIterator(global::haxe.ds.ObjectMap<K, T> m) {
+			global::haxe.ds._ObjectMap.ObjectMapValueIterator<object, object>.__hx_ctor_haxe_ds__ObjectMap_ObjectMapValueIterator<K, T>(((global::haxe.ds._ObjectMap.ObjectMapValueIterator<K, T>) (this) ), ((global::haxe.ds.ObjectMap<K, T>) (m) ));
+		}
+		
+		
+		private static void __hx_ctor_haxe_ds__ObjectMap_ObjectMapValueIterator<K_c, T_c>(global::haxe.ds._ObjectMap.ObjectMapValueIterator<K_c, T_c> __hx_this, global::haxe.ds.ObjectMap<K_c, T_c> m) {
+			__hx_this.i = 0;
+			__hx_this.m = m;
+			__hx_this.len = m.nBuckets;
+		}
+		
+		
+		public static object __hx_cast<K_c_c, T_c_c>(global::haxe.ds._ObjectMap.ObjectMapValueIterator me) {
+			return ( (( me != null )) ? (me.haxe_ds__ObjectMap_ObjectMapValueIterator_cast<K_c_c, T_c_c>()) : default(object) );
+		}
+		
+		
+		public object haxe_ds__ObjectMap_ObjectMapValueIterator_cast<K_c, T_c>() {
+			if (( global::haxe.lang.Runtime.eq(typeof(K), typeof(K_c)) && global::haxe.lang.Runtime.eq(typeof(T), typeof(T_c)) )) {
+				return this;
+			}
+			
+			global::haxe.ds._ObjectMap.ObjectMapValueIterator<K_c, T_c> new_me = new global::haxe.ds._ObjectMap.ObjectMapValueIterator<K_c, T_c>(((global::haxe.lang.EmptyObject) (global::haxe.lang.EmptyObject.EMPTY) ));
+			global::haxe.root.Array<string> fields = global::haxe.root.Reflect.fields(this);
+			int i = 0;
+			while (( i < fields.length )) {
+				string field = fields[i++];
+				global::haxe.root.Reflect.setField(new_me, field, global::haxe.root.Reflect.field(this, field));
+			}
+			
+			return new_me;
+		}
+		
+		
+		public global::haxe.ds.ObjectMap<K, T> m;
+		
+		public int i;
+		
+		public int len;
+		
+		public bool hasNext() {
+			unchecked {
+				{
+					int _g = this.i;
+					int _g1 = this.len;
+					while (( _g < _g1 )) {
+						int j = _g++;
+						if (( (( this.m.hashes[j] & -2 )) != 0 )) {
+							this.i = j;
+							return true;
+						}
+						
+					}
+					
+				}
+				
+				return false;
+			}
+		}
+		
+		
+		public T next() {
+			unchecked {
+				T ret = global::haxe.lang.Runtime.genericCast<T>(this.m.vals[this.i]);
+				this.i += 1;
+				return ret;
+			}
+		}
+		
+		
+		public override double __hx_setField_f(string field, int hash, double @value, bool handleProperties) {
+			unchecked {
+				switch (hash) {
+					case 5393365:
+					{
+						this.len = ((int) (@value) );
+						return @value;
+					}
+					
+					
+					case 105:
+					{
+						this.i = ((int) (@value) );
+						return @value;
+					}
+					
+					
+					default:
+					{
+						return base.__hx_setField_f(field, hash, @value, handleProperties);
+					}
+					
+				}
+				
+			}
+		}
+		
+		
+		public override object __hx_setField(string field, int hash, object @value, bool handleProperties) {
+			unchecked {
+				switch (hash) {
+					case 5393365:
+					{
+						this.len = ((int) (global::haxe.lang.Runtime.toInt(@value)) );
+						return @value;
+					}
+					
+					
+					case 105:
+					{
+						this.i = ((int) (global::haxe.lang.Runtime.toInt(@value)) );
+						return @value;
+					}
+					
+					
+					case 109:
+					{
+						this.m = ((global::haxe.ds.ObjectMap<K, T>) (global::haxe.ds.ObjectMap<object, object>.__hx_cast<K, T>(((global::haxe.ds.ObjectMap) (@value) ))) );
+						return @value;
+					}
+					
+					
+					default:
+					{
+						return base.__hx_setField(field, hash, @value, handleProperties);
+					}
+					
+				}
+				
+			}
+		}
+		
+		
+		public override object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties) {
+			unchecked {
+				switch (hash) {
+					case 1224901875:
+					{
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(this, "next", 1224901875)) );
+					}
+					
+					
+					case 407283053:
+					{
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(this, "hasNext", 407283053)) );
+					}
+					
+					
+					case 5393365:
+					{
+						return this.len;
+					}
+					
+					
+					case 105:
+					{
+						return this.i;
+					}
+					
+					
+					case 109:
+					{
+						return this.m;
+					}
+					
+					
+					default:
+					{
+						return base.__hx_getField(field, hash, throwErrors, isCheck, handleProperties);
+					}
+					
+				}
+				
+			}
+		}
+		
+		
+		public override double __hx_getField_f(string field, int hash, bool throwErrors, bool handleProperties) {
+			unchecked {
+				switch (hash) {
+					case 5393365:
+					{
+						return ((double) (this.len) );
+					}
+					
+					
+					case 105:
+					{
+						return ((double) (this.i) );
+					}
+					
+					
+					default:
+					{
+						return base.__hx_getField_f(field, hash, throwErrors, handleProperties);
+					}
+					
+				}
+				
+			}
+		}
+		
+		
+		public override object __hx_invokeField(string field, int hash, object[] dynargs) {
+			unchecked {
+				switch (hash) {
+					case 1224901875:
+					{
+						return this.next();
+					}
+					
+					
+					case 407283053:
+					{
+						return this.hasNext();
+					}
+					
+					
+					default:
+					{
+						return base.__hx_invokeField(field, hash, dynargs);
+					}
+					
+				}
+				
+			}
+		}
+		
+		
+		public override void __hx_getFields(global::haxe.root.Array<string> baseArr) {
+			baseArr.push("len");
+			baseArr.push("i");
+			baseArr.push("m");
+			base.__hx_getFields(baseArr);
+		}
+		
+		
+	}
+}
+
+
+
+#pragma warning disable 109, 114, 219, 429, 168, 162
+namespace haxe.ds._ObjectMap {
+	[global::haxe.lang.GenericInterface(typeof(global::haxe.ds._ObjectMap.ObjectMapValueIterator<object, object>))]
+	public interface ObjectMapValueIterator : global::haxe.lang.IHxObject, global::haxe.lang.IGenericObject {
+		
+		object haxe_ds__ObjectMap_ObjectMapValueIterator_cast<K_c, T_c>();
 		
 		bool hasNext();
 		

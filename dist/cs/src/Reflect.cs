@@ -18,6 +18,16 @@ namespace haxe.root {
 		}
 		
 		
+		public static bool hasField(object o, string field) {
+			global::haxe.lang.IHxObject ihx = ((global::haxe.lang.IHxObject) (( o as global::haxe.lang.IHxObject )) );
+			if (( ihx != null )) {
+				return ( ihx.__hx_getField(field, global::haxe.lang.FieldLookup.hash(field), false, true, false) != global::haxe.lang.Runtime.undefined );
+			}
+			
+			return global::haxe.lang.Runtime.slowHasField(o, field);
+		}
+		
+		
 		public static object field(object o, string field) {
 			global::haxe.lang.IHxObject ihx = ((global::haxe.lang.IHxObject) (( o as global::haxe.lang.IHxObject )) );
 			if (( ihx != null )) {
@@ -37,6 +47,43 @@ namespace haxe.root {
 				global::haxe.lang.Runtime.slowSetField(o, field, @value);
 			}
 			
+		}
+		
+		
+		public static object getProperty(object o, string field) {
+			global::haxe.lang.IHxObject ihx = ((global::haxe.lang.IHxObject) (( o as global::haxe.lang.IHxObject )) );
+			if (( ihx != null )) {
+				return ihx.__hx_getField(field, global::haxe.lang.FieldLookup.hash(field), false, false, true);
+			}
+			
+			if (global::haxe.lang.Runtime.slowHasField(o, global::haxe.lang.Runtime.concat("get_", field))) {
+				return global::haxe.lang.Runtime.slowCallField(o, global::haxe.lang.Runtime.concat("get_", field), null);
+			}
+			
+			return global::haxe.lang.Runtime.slowGetField(o, field, false);
+		}
+		
+		
+		public static void setProperty(object o, string field, object @value) {
+			global::haxe.lang.IHxObject ihx = ((global::haxe.lang.IHxObject) (( o as global::haxe.lang.IHxObject )) );
+			if (( ihx != null )) {
+				ihx.__hx_setField(field, global::haxe.lang.FieldLookup.hash(field), @value, true);
+			}
+			else if (global::haxe.lang.Runtime.slowHasField(o, global::haxe.lang.Runtime.concat("set_", field))) {
+				global::haxe.lang.Runtime.slowCallField(o, global::haxe.lang.Runtime.concat("set_", field), new object[]{((object) (@value) )});
+			}
+			else {
+				global::haxe.lang.Runtime.slowSetField(o, field, @value);
+			}
+			
+		}
+		
+		
+		public static object callMethod(object o, object func, global::haxe.root.Array args) {
+			object[] ret = new object[((int) (global::haxe.lang.Runtime.getField_f(args, "length", 520590566, true)) )];
+			global::cs.Lib.p_nativeArray<object>(((global::haxe.root.Array<object>) (global::haxe.root.Array<object>.__hx_cast<object>(((global::haxe.root.Array) (args) ))) ), ((global::System.Array) (ret) ));
+			object[] args1 = ret;
+			return (((global::haxe.lang.Function) (func) )).__hx_invokeDynamic(args1);
 		}
 		
 		
@@ -79,6 +126,101 @@ namespace haxe.root {
 			}
 			
 			return ret;
+		}
+		
+		
+		public static bool isFunction(object f) {
+			return ( f is global::haxe.lang.Function );
+		}
+		
+		
+		public static int compare<T>(T a, T b) {
+			return global::haxe.lang.Runtime.compare(a, b);
+		}
+		
+		
+		public static bool compareMethods(object f1, object f2) {
+			if (global::haxe.lang.Runtime.eq(f1, f2)) {
+				return true;
+			}
+			
+			if (( ( f1 is global::haxe.lang.Closure ) && ( f2 is global::haxe.lang.Closure ) )) {
+				global::haxe.lang.Closure f1c = ((global::haxe.lang.Closure) (f1) );
+				global::haxe.lang.Closure f2c = ((global::haxe.lang.Closure) (f2) );
+				if (global::haxe.lang.Runtime.refEq(f1c.obj, f2c.obj)) {
+					return ( f1c.field == f2c.field );
+				}
+				else {
+					return false;
+				}
+				
+			}
+			
+			return false;
+		}
+		
+		
+		public static bool isObject(object v) {
+			if (( v != null )) {
+				return  ! ((( ( ( v is global::haxe.lang.Enum ) || ( v is global::haxe.lang.Function ) ) || ( v is global::System.ValueType ) ))) ;
+			}
+			else {
+				return false;
+			}
+			
+		}
+		
+		
+		public static bool isEnumValue(object v) {
+			if (( v != null )) {
+				if ( ! (( v is global::haxe.lang.Enum )) ) {
+					return ( v is global::System.Enum );
+				}
+				else {
+					return true;
+				}
+				
+			}
+			else {
+				return false;
+			}
+			
+		}
+		
+		
+		public static bool deleteField(object o, string field) {
+			global::haxe.lang.DynamicObject ihx = ((global::haxe.lang.DynamicObject) (( o as global::haxe.lang.DynamicObject )) );
+			if (( ihx != null )) {
+				return ihx.__hx_deleteField(field, global::haxe.lang.FieldLookup.hash(field));
+			}
+			
+			return false;
+		}
+		
+		
+		public static global::haxe.lang.Null<T> copy<T>(global::haxe.lang.Null<T> o) {
+			if ( ! (o.hasValue) ) {
+				return default(global::haxe.lang.Null<T>);
+			}
+			
+			object o2 = new global::haxe.lang.DynamicObject(new int[]{}, new object[]{}, new int[]{}, new double[]{});
+			{
+				int _g = 0;
+				global::haxe.root.Array<string> _g1 = global::haxe.root.Reflect.fields((o).toDynamic());
+				while (( _g < _g1.length )) {
+					string f = _g1[_g];
+					 ++ _g;
+					global::haxe.root.Reflect.setField(o2, f, global::haxe.root.Reflect.field((o).toDynamic(), f));
+				}
+				
+			}
+			
+			return global::haxe.lang.Null<object>.ofDynamic<T>(o2);
+		}
+		
+		
+		public static object makeVarArgs(global::haxe.lang.Function f) {
+			return new global::haxe.lang.VarArgsFunction(f);
 		}
 		
 		

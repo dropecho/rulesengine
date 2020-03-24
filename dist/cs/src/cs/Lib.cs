@@ -28,6 +28,54 @@ namespace cs {
 		}
 		
 		
+		public static void revertDefaultCulture() {
+			global::System.Globalization.CultureInfo ci = new global::System.Globalization.CultureInfo(((string) (global::System.Threading.Thread.CurrentThread.CurrentCulture.Name) ), ((bool) (true) ));
+			global::System.Threading.Thread.CurrentThread.CurrentCulture = ((global::System.Globalization.CultureInfo) (ci) );
+		}
+		
+		
+		public static void p_nativeArray<T>(global::haxe.root.Array<T> arr, global::System.Array ret) {
+			T[] native = arr.__a;
+			int len = arr.length;
+			global::System.Array.Copy(((global::System.Array) (native) ), ((int) (0) ), ((global::System.Array) (ret) ), ((int) (0) ), ((int) (len) ));
+		}
+		
+		
+		public static global::System.Type fromNativeType(global::System.Type t) {
+			return t;
+		}
+		
+		
+		public static global::System.Type toNativeType(global::System.Type cl) {
+			return cl;
+		}
+		
+		
+		public static global::System.Type toNativeEnum(global::System.Type cl) {
+			return cl;
+		}
+		
+		
+		public static global::System.Type nativeType(object obj) {
+			return obj.GetType();
+		}
+		
+		
+		public static global::System.Type getNativeType(object obj) {
+			return obj.GetType();
+		}
+		
+		
+		public static global::haxe.root.Array<T> array<T>(T[] native) {
+			return new global::haxe.root.Array<T>(((T[]) (native) ));
+		}
+		
+		
+		public static global::haxe.root.Array<T> arrayAlloc<T>(int size) {
+			return new global::haxe.root.Array<T>(((T[]) (new T[size]) ));
+		}
+		
+		
 	}
 }
 
