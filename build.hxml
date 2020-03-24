@@ -13,6 +13,9 @@
 
 ## C#
 -cp src
+-D dce=full
+-D dll_import
+-D no-root
 
 # DEFINES / MACROS
 --macro addGlobalMetadata('*', '@:nativeGen')

@@ -22,7 +22,7 @@ namespace haxe.lang {
 		
 		object __hx_invokeField(string field, int hash, object[] dynargs);
 		
-		void __hx_getFields(global::Array<string> baseArr);
+		void __hx_getFields(global::haxe.root.Array<string> baseArr);
 		
 	}
 }
@@ -162,7 +162,7 @@ namespace haxe.lang {
 		}
 		
 		
-		public virtual void __hx_getFields(global::Array<string> baseArr) {
+		public virtual void __hx_getFields(global::haxe.root.Array<string> baseArr) {
 		}
 		
 		
@@ -365,7 +365,7 @@ namespace haxe.lang {
 		}
 		
 		
-		public override void __hx_getFields(global::Array<string> baseArr) {
+		public override void __hx_getFields(global::haxe.root.Array<string> baseArr) {
 			{
 				int _g = 0;
 				int _g1 = this.__hx_length;
@@ -439,7 +439,7 @@ namespace haxe.lang {
 			bool first = true;
 			{
 				int _g = 0;
-				global::Array<string> _g1 = global::Reflect.fields(this);
+				global::haxe.root.Array<string> _g1 = global::haxe.root.Reflect.fields(this);
 				while (( _g < _g1.length )) {
 					string f = _g1[_g];
 					 ++ _g;
@@ -451,9 +451,9 @@ namespace haxe.lang {
 					}
 					
 					ret_b.Append(((string) (" ") ));
-					ret_b.Append(((string) (global::Std.@string(f)) ));
+					ret_b.Append(((string) (global::haxe.root.Std.@string(f)) ));
 					ret_b.Append(((string) (" : ") ));
-					ret_b.Append(((string) (global::Std.@string(((object) (global::Reflect.field(this, f)) ))) ));
+					ret_b.Append(((string) (global::haxe.root.Std.@string(((object) (global::haxe.root.Reflect.field(this, f)) ))) ));
 				}
 				
 			}
@@ -513,7 +513,7 @@ namespace haxe.lang {
 		
 		protected static string paramsToString(string tag, object[] @params) {
 			global::System.Text.StringBuilder ret_b = new global::System.Text.StringBuilder();
-			ret_b.Append(((string) (global::Std.@string(tag)) ));
+			ret_b.Append(((string) (global::haxe.root.Std.@string(tag)) ));
 			ret_b.Append(((string) ("(") ));
 			bool first = true;
 			{
@@ -528,7 +528,7 @@ namespace haxe.lang {
 						ret_b.Append(((string) (",") ));
 					}
 					
-					ret_b.Append(((string) (global::Std.@string(((object) (p) ))) ));
+					ret_b.Append(((string) (global::haxe.root.Std.@string(((object) (p) ))) ));
 				}
 				
 			}
@@ -568,8 +568,8 @@ namespace haxe.lang {
 		}
 		
 		
-		public virtual global::Array<object> getParams() {
-			return new global::Array<object>(new object[]{});
+		public virtual global::haxe.root.Array<object> getParams() {
+			return new global::haxe.root.Array<object>(new object[]{});
 		}
 		
 		

@@ -105,7 +105,7 @@ namespace haxe.lang {
 		}
 		
 		
-		public static global::Array<string> split(global::System.String me, global::System.String delimiter) {
+		public static global::haxe.root.Array<string> split(global::System.String me, global::System.String delimiter) {
 			unchecked {
 				string[] native = null;
 				if (( delimiter.Length == 0 )) {
@@ -128,7 +128,7 @@ namespace haxe.lang {
 					native = me.Split(((string[]) (str) ), ((global::System.StringSplitOptions) (global::System.StringSplitOptions.None) ));
 				}
 				
-				return new global::Array<string>(((string[]) (native) ));
+				return new global::haxe.root.Array<string>(((string[]) (native) ));
 			}
 		}
 		
@@ -246,7 +246,7 @@ namespace haxe.lang {
 	public class StringRefl {
 		
 		static StringRefl() {
-			global::haxe.lang.StringRefl.fields = new global::Array<string>(new string[]{"length", "toUpperCase", "toLowerCase", "charAt", "charCodeAt", "indexOf", "lastIndexOf", "split", "substr", "substring"});
+			global::haxe.lang.StringRefl.fields = new global::haxe.root.Array<string>(new string[]{"length", "toUpperCase", "toLowerCase", "charAt", "charCodeAt", "indexOf", "lastIndexOf", "split", "substr", "substring"});
 		}
 		
 		
@@ -254,7 +254,7 @@ namespace haxe.lang {
 		}
 		
 		
-		public static global::Array<string> fields;
+		public static global::haxe.root.Array<string> fields;
 		
 		public static object handleGetField(string str, string f, bool throwErrors) {
 			switch (f) {
