@@ -1,35 +1,11 @@
 {
-  "name": "graph",
+  "name": "vantreeseba.rulesEngine",
   "version": "0.0.1",
+  "displayName": "Simple Rules Engine",
   "description": "",
-  "main": "index.js",
-  "directories": {
-    "test": "test"
-  },
-  "scripts": {
-    "test": "haxelib run munit t -coverage",
-    "watch": "npm-watch test",
-    "build": "haxe build.hxml",
-    "subtree": "npm run build && npm run subtree:cs && npm run subtree:js",
-    "subtree:cs": "cp .gitignore dist/cs && git subtree split -P dist/cs -b UPM",
-    "subtree:js": "cp .gitignore dist/js && git subtree split -P dist/js -b NPM"
-  },
-  "watch": {
-    "test": {
-      "patterns": [
-        "test",
-        "src"
-      ],
-      "extensions": "hx",
-      "ignore":  [
-        "test/TestMain.hx",
-        "test/TestSuite.hx"
-      ]
-    }
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "npm-watch": "^0.6.0"
+  "unity": "2019.3",
+  "author": {
+    "name": "Ben Van Treese",
+    "email": "vantreeseba@gmail.com"
   }
 }
