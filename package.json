@@ -16,7 +16,7 @@
     "subtree:cs:packagejson": "cp package.upm.json dist/cs/package.json",
     "subtree:js": "npm run subtree:js:gitignore && npm run subtree:js:packagejson && git subtree split -P dist/js -b NPM",
     "subtree:js:gitignore": "cp .gitignore dist/js",
-    "subtree:js:packagejson": "cp package.npm.json dist/cs/package.json"
+    "subtree:js:packagejson": "cp package.npm.json dist/js/package.json"
   },
   "watch": {
     "test": {
