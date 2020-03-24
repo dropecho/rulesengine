@@ -1,6 +1,7 @@
 package engine;
 
 import massive.munit.Assert;
+import vantreeseba.rulesEngine.*;
 
 class EngineTest {
 	@Test

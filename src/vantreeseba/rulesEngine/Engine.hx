@@ -1,3 +1,5 @@
+package vantreeseba.rulesEngine;
+
 @:expose
 class Engine {
 	public var rules:Array<Rule> = new Array<Rule>();

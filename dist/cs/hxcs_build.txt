@@ -73,6 +73,8 @@ M System.Enum
 M haxe.extern.Rest
 M System.Collections.IEnumerable
 M System.Runtime.Remoting.Messaging.IMessage
+M vantreeseba.rulesEngine.Rule
+C vantreeseba.rulesEngine.Rule
 M System.Collections.Generic.IEnumerable`1
 M cs.system.reflection.ResourceLocation
 M cs.system.security.cryptography.x509certificates.X509KeyStorageFlags
@@ -117,17 +119,6 @@ M System.Runtime.InteropServices.SafeHandle
 M System.Reflection.Emit.PropertyBuilder
 M cs.system.globalization.DateTimeStyles
 M System.Reflection.Emit.Label
-M Condition
-E OPERATOR
-C OPERATOR
-C OPERATOR_GT
-C OPERATOR_GTE
-C OPERATOR_LT
-C OPERATOR_LTE
-C OPERATOR_EQ
-C OPERATOR_NEQ
-C ConditionResult
-C Condition
 M cs.system.security.cryptography.x509certificates.X509ContentType
 M cs.system.threading.ContextCallback
 M System.Runtime.InteropServices._SignatureHelper
@@ -159,6 +150,8 @@ M cs.system.globalization.UnicodeCategory
 M System.Runtime.InteropServices._LocalBuilder
 M System.Collections.IList
 M System.Threading.ExecutionContext
+M vantreeseba.rulesEngine.Engine
+C vantreeseba.rulesEngine.Engine
 M System.ICloneable
 M cs.system.Guid
 M System.Runtime.Remoting.IObjectHandle
@@ -242,6 +235,8 @@ M System.IFormatProvider
 M System.Security.IPermission
 M Reflect
 C Reflect
+M vantreeseba.rulesEngine.Blackboard
+C vantreeseba.rulesEngine.Blackboard
 M cs.system.Base64FormattingOptions
 M cs.system.security.accesscontrol.AccessControlType
 M System.IFormattable
@@ -265,8 +260,6 @@ M haxe.ds.Vector
 M System.Type
 M cs.system.reflection.emit.AssemblyBuilderAccess
 M System.Security.Permissions.StrongNamePublicKeyBlob
-M Blackboard
-C Blackboard
 M cs.system.TypeCode
 M Class
 M System.Reflection.ParameterModifier
@@ -341,6 +334,15 @@ M System.Globalization.NumberFormatInfo
 M System.Security.Principal.IIdentity
 M cs.system.Converter_2
 M System.CharEnumerator
+M vantreeseba.rulesEngine.Operator
+E vantreeseba.rulesEngine.Operator
+C vantreeseba.rulesEngine.Operator
+C vantreeseba.rulesEngine.Operator_GT
+C vantreeseba.rulesEngine.Operator_GTE
+C vantreeseba.rulesEngine.Operator_LT
+C vantreeseba.rulesEngine.Operator_LTE
+C vantreeseba.rulesEngine.Operator_EQ
+C vantreeseba.rulesEngine.Operator_NEQ
 M System.AppDomainManager
 M System.Runtime.InteropServices._TypeBuilder
 M System.Runtime.Remoting.ObjRef
@@ -373,9 +375,6 @@ E haxe.lang.EmptyObject
 C haxe.lang.Runtime
 M cs.Lib
 C cs.Lib
-M Rule
-C RuleResult
-C Rule
 M cs.system.Array
 M System.Runtime.InteropServices._ILGenerator
 M System.Security.ISecurityEncodable
@@ -412,6 +411,8 @@ M System.Collections.ReadOnlyCollectionBase
 M System.IAppDomainSetup
 M System.Reflection.LocalVariableInfo
 M cs.system.reflection.emit.StackBehaviour
+M vantreeseba.rulesEngine.RuleResult
+C vantreeseba.rulesEngine.RuleResult
 M System.Runtime.Remoting.Messaging.IMessageSink
 M System.Text.StringBuilder
 M System.Convert
@@ -431,6 +432,8 @@ M System.Runtime.InteropServices._AssemblyBuilder
 M System.Runtime.InteropServices._Assembly
 M System.Runtime.InteropServices._EnumBuilder
 M cs.system.security.accesscontrol.InheritanceFlags
+M vantreeseba.rulesEngine.ConditionResult
+C vantreeseba.rulesEngine.ConditionResult
 M System.Runtime.InteropServices._MethodInfo
 M System.Security.SecurityState
 M cs.system.DateTimeKind
@@ -440,8 +443,6 @@ M System.Globalization.CultureInfo
 M System.Threading.AsyncFlowControl
 M Microsoft.Win32.SafeHandles.SafeWaitHandle
 M cs.system.reflection.emit.OperandType
-M Engine
-C Engine
 M System.Security.Policy.ApplicationTrust
 M System.Runtime.InteropServices._Activator
 M cs.system.security.accesscontrol.FileSystemRights
@@ -467,6 +468,8 @@ M System.Diagnostics.SymbolStore.ISymbolWriter
 M cs.system.reflection.PropertyAttributes
 M Microsoft.Win32.SafeHandles.SafeHandleZeroOrMinusOneIsInvalid
 M cs.system.UriFormat
+M vantreeseba.rulesEngine.Condition
+C vantreeseba.rulesEngine.Condition
 M System.Reflection.Emit.FieldToken
 M cs.system.runtime.interopservices.LayoutKind
 M cs.system.security.HostSecurityManagerOptions

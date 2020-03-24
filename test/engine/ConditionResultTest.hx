@@ -1,7 +1,7 @@
 package engine;
 
 import massive.munit.Assert;
-import Condition;
+import vantreeseba.rulesEngine.*;
 
 class ConditionResultTest {
 	public var int_condition:Condition;
@@ -21,7 +21,7 @@ class ConditionResultTest {
 	public function setup() {
 		int_condition = new Condition();
 		int_condition.fact = "test_int";
-		int_condition.op = OPERATOR.EQ;
+		int_condition.op = Operator.EQ;
 		int_condition.value = 1;
 	}
 

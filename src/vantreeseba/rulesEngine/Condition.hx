@@ -1,29 +1,9 @@
-enum OPERATOR {
-	GT;
-	GTE;
-	LT;
-	LTE;
-	EQ;
-	NEQ;
-}
-
-@:expose
-class ConditionResult {
-	public var condition:Condition;
-	public var matches:Bool;
-	public var reason:String;
-
-	public function new(con:Condition, res:Bool) {
-		condition = con;
-		matches = res;
-		reason = con.fact + " should be " + con.op + " " + con.value;
-	}
-}
+package vantreeseba.rulesEngine;
 
 @:expose
 class Condition {
 	public var fact:String = "";
-	public var op:OPERATOR = OPERATOR.EQ;
+	public var op:Operator = Operator.EQ;
 	public var value:Dynamic = null;
 
 	public function new() {}

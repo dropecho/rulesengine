@@ -1,8 +1,7 @@
 package engine;
 
 import massive.munit.Assert;
-import Rule;
-import Condition;
+import vantreeseba.rulesEngine.*;
 
 class RuleTest {
 	public var rule:Rule;
@@ -25,17 +24,17 @@ class RuleTest {
 
 		int_condition = new Condition();
 		int_condition.fact = "test_int";
-		int_condition.op = OPERATOR.EQ;
+		int_condition.op = Operator.EQ;
 		int_condition.value = 1;
 
 		bool_condition = new Condition();
 		bool_condition.fact = "test_bool";
-		bool_condition.op = OPERATOR.EQ;
+		bool_condition.op = Operator.EQ;
 		bool_condition.value = true;
 
 		string_condition = new Condition();
 		string_condition.fact = "test_string";
-		string_condition.op = OPERATOR.EQ;
+		string_condition.op = Operator.EQ;
 		string_condition.value = "fact";
 	}
 
