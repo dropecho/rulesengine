@@ -9,8 +9,9 @@
   "scripts": {
     "test": "haxelib run munit t -coverage",
     "watch": "npm-watch test",
-    "publish:cs": "git subtree split -P dist/cs -b UPM",
-    "publish:js": "git subtree split -P dist/js -b NPM"
+    "subtree": "npm run subtree:cs && npm run subtree:js",
+    "subtree:cs": "cp .gitignore dist/cs && git subtree split -P dist/cs -b UPM",
+    "subtree:js": "cp .gitignore dist/js && git subtree split -P dist/js -b NPM"
   },
   "watch": {
     "test": {
