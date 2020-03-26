@@ -32,7 +32,7 @@ namespace vantreeseba.rulesEngine {
 		
 		public virtual bool matches(global::vantreeseba.rulesEngine.Blackboard bb) {
 			unchecked {
-				object val = ((object) (global::haxe.lang.Runtime.callField(((global::haxe.ds.StringMap) (((object) (((global::haxe.IMap) (((object) (bb.facts) )) )) )) ), "get", 5144726, new object[]{this.fact})) );
+				object val = ((object) (global::haxe.lang.Runtime.callField(bb.facts, "get", 5144726, new object[]{this.fact})) );
 				switch (this.op._hx_index) {
 					case 0:
 					{

@@ -16,16 +16,18 @@ namespace vantreeseba.rulesEngine {
 		
 		protected static void __hx_ctor_vantreeseba_rulesEngine_Blackboard(global::vantreeseba.rulesEngine.Blackboard __hx_this) {
 			__hx_this.facts = new global::haxe.ds.StringMap<object>();
-			{
-			}
-			
 		}
 		
 		
 		public global::haxe.ds.StringMap facts;
 		
 		public virtual void @set(string key, object val) {
-			object __temp_expr1 = ((object) (global::haxe.lang.Runtime.callField(((global::haxe.ds.StringMap) (((object) (((global::haxe.IMap) (((object) (this.facts) )) )) )) ), "set", 5741474, new object[]{key, ((object) (val) )})) );
+			object __temp_expr1 = ((object) (global::haxe.lang.Runtime.callField(this.facts, "set", 5741474, new object[]{key, val})) );
+		}
+		
+		
+		public virtual object @get(string key) {
+			return ((object) (global::haxe.lang.Runtime.callField(this.facts, "get", 5144726, new object[]{key})) );
 		}
 		
 		
@@ -53,6 +55,12 @@ namespace vantreeseba.rulesEngine {
 		public override object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties) {
 			unchecked {
 				switch (hash) {
+					case 5144726:
+					{
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(this, "get", 5144726)) );
+					}
+					
+					
 					case 5741474:
 					{
 						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(this, "set", 5741474)) );
@@ -79,6 +87,12 @@ namespace vantreeseba.rulesEngine {
 		public override object __hx_invokeField(string field, int hash, object[] dynargs) {
 			unchecked {
 				switch (hash) {
+					case 5144726:
+					{
+						return this.@get(global::haxe.lang.Runtime.toString(dynargs[0]));
+					}
+					
+					
 					case 5741474:
 					{
 						this.@set(global::haxe.lang.Runtime.toString(dynargs[0]), dynargs[1]);

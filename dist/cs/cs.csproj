@@ -69,8 +69,6 @@
 	
     <Compile Include="src\cs\internal\Function.cs"/>
 	
-    <Compile Include="src\haxe\ds\BalancedTree.cs"/>
-	
     <Compile Include="src\haxe\Int32.cs"/>
 	
     <Compile Include="src\vantreeseba\rulesEngine\Engine.cs"/>
@@ -78,8 +76,6 @@
     <Compile Include="src\haxe\ds\ReadOnlyArray.cs"/>
 	
     <Compile Include="src\Type.cs"/>
-	
-    <Compile Include="src\haxe\ds\HashMap.cs"/>
 	
     <Compile Include="src\haxe\SysTools.cs"/>
 	
@@ -95,13 +91,9 @@
 	
     <Compile Include="src\haxe\Constraints.cs"/>
 	
-    <Compile Include="src\haxe\ds\ObjectMap.cs"/>
-	
     <Compile Include="src\cs\Flags.cs"/>
 	
     <Compile Include="src\haxe\ds\StringMap.cs"/>
-	
-    <Compile Include="src\haxe\ds\WeakMap.cs"/>
 	
     <Compile Include="src\vantreeseba\rulesEngine\Operator.cs"/>
 	
@@ -131,15 +123,11 @@
 	
     <Compile Include="src\cs\internal\FieldLookup.cs"/>
 	
-    <Compile Include="src\haxe\ds\Map.cs"/>
-	
     <Compile Include="src\vantreeseba\rulesEngine\ConditionResult.cs"/>
 	
     <Compile Include="src\haxe\iterators\MapKeyValueIterator.cs"/>
 	
     <Compile Include="src\haxe\lang\DceNo.cs"/>
-	
-    <Compile Include="src\haxe\ds\EnumValueMap.cs"/>
 	
     <Compile Include="src\haxe\Int64Helper.cs"/>
 	

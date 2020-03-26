@@ -31,6 +31,10 @@ namespace vantreeseba.rulesEngine {
 		}
 		
 		
+		public virtual void DOOOBITY() {
+		}
+		
+		
 		public override object __hx_setField(string field, int hash, object @value, bool handleProperties) {
 			unchecked {
 				switch (hash) {
@@ -62,6 +66,12 @@ namespace vantreeseba.rulesEngine {
 		public override object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties) {
 			unchecked {
 				switch (hash) {
+					case 1161235959:
+					{
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(this, "DOOOBITY", 1161235959)) );
+					}
+					
+					
 					case 5695307:
 					{
 						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(this, "run", 5695307)) );
@@ -94,6 +104,13 @@ namespace vantreeseba.rulesEngine {
 		public override object __hx_invokeField(string field, int hash, object[] dynargs) {
 			unchecked {
 				switch (hash) {
+					case 1161235959:
+					{
+						this.DOOOBITY();
+						break;
+					}
+					
+					
 					case 5695307:
 					{
 						this.run();

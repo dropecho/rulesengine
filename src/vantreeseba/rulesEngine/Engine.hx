@@ -8,4 +8,6 @@ class Engine {
 	public function new() {}
 
 	public function run() {}
+
+	public function DOOOBITY() {}
 }

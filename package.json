@@ -1,7 +1,8 @@
 {
-  "name": "graph",
+  "name": "simple_rules_engine",
+  "displayName": "Rules Engine",
   "version": "0.0.1",
-  "description": "",
+  "description": "A basic rules engine for game dev.",
   "main": "index.js",
   "directories": {
     "test": "test"
@@ -9,11 +10,8 @@
   "scripts": {
     "test": "haxelib run munit t -coverage",
     "watch": "npm-watch test",
-    "build": "haxe build.hxml",
-    "subtree": "npm run build && npm run subtree:cs && npm run subtree:js",
-    "subtree:cs": "npm run subtree:cs:gitignore && npm run subtree:cs:packagejson && git subtree split -P dist/cs -b UPM",
-    "subtree:cs:gitignore": "cp .gitignore dist/cs",
-    "subtree:cs:packagejson": "cp package.upm.json dist/cs/package.json",
+    "build": "haxe build.hxml && npm run cs:packagejson",
+    "cs:packagejson": "cp package.upm.json dist/cs/package.json",
     "subtree:js": "npm run subtree:js:gitignore && npm run subtree:js:packagejson && git subtree split -P dist/js -b NPM",
     "subtree:js:gitignore": "cp .gitignore dist/js",
     "subtree:js:packagejson": "cp package.npm.json dist/js/package.json"

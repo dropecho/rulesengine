@@ -1026,337 +1026,6 @@ class haxe__$DynamicAccess_DynamicAccess_$Impl_$ {
 }
 $hxClasses["haxe._DynamicAccess.DynamicAccess_Impl_"] = haxe__$DynamicAccess_DynamicAccess_$Impl_$;
 haxe__$DynamicAccess_DynamicAccess_$Impl_$.__name__ = "haxe._DynamicAccess.DynamicAccess_Impl_";
-class haxe_ds_BalancedTree {
-	constructor() {
-	}
-	set(key,value) {
-		this.root = this.setLoop(key,value,this.root);
-	}
-	get(key) {
-		var node = this.root;
-		while(node != null) {
-			var c = this.compare(key,node.key);
-			if(c == 0) {
-				return node.value;
-			}
-			if(c < 0) {
-				node = node.left;
-			} else {
-				node = node.right;
-			}
-		}
-		return null;
-	}
-	remove(key) {
-		try {
-			this.root = this.removeLoop(key,this.root);
-			return true;
-		} catch( e ) {
-			var e1 = ((e) instanceof js__$Boot_HaxeError) ? e.val : e;
-			if(typeof(e1) == "string") {
-				var e2 = e1;
-				return false;
-			} else {
-				throw e;
-			}
-		}
-	}
-	exists(key) {
-		var node = this.root;
-		while(node != null) {
-			var c = this.compare(key,node.key);
-			if(c == 0) {
-				return true;
-			} else if(c < 0) {
-				node = node.left;
-			} else {
-				node = node.right;
-			}
-		}
-		return false;
-	}
-	iterator() {
-		var ret = [];
-		this.iteratorLoop(this.root,ret);
-		return HxOverrides.iter(ret);
-	}
-	keyValueIterator() {
-		return new haxe_iterators_MapKeyValueIterator(this);
-	}
-	keys() {
-		var ret = [];
-		this.keysLoop(this.root,ret);
-		return HxOverrides.iter(ret);
-	}
-	copy() {
-		var copied = new haxe_ds_BalancedTree();
-		copied.root = this.root;
-		return copied;
-	}
-	setLoop(k,v,node) {
-		if(node == null) {
-			return new haxe_ds_TreeNode(null,k,v,null);
-		}
-		var c = this.compare(k,node.key);
-		if(c == 0) {
-			return new haxe_ds_TreeNode(node.left,k,v,node.right,node == null ? 0 : node._height);
-		} else if(c < 0) {
-			var nl = this.setLoop(k,v,node.left);
-			return this.balance(nl,node.key,node.value,node.right);
-		} else {
-			var nr = this.setLoop(k,v,node.right);
-			return this.balance(node.left,node.key,node.value,nr);
-		}
-	}
-	removeLoop(k,node) {
-		if(node == null) {
-			throw new js__$Boot_HaxeError("Not_found");
-		}
-		var c = this.compare(k,node.key);
-		if(c == 0) {
-			return this.merge(node.left,node.right);
-		} else if(c < 0) {
-			return this.balance(this.removeLoop(k,node.left),node.key,node.value,node.right);
-		} else {
-			return this.balance(node.left,node.key,node.value,this.removeLoop(k,node.right));
-		}
-	}
-	iteratorLoop(node,acc) {
-		if(node != null) {
-			this.iteratorLoop(node.left,acc);
-			acc.push(node.value);
-			this.iteratorLoop(node.right,acc);
-		}
-	}
-	keysLoop(node,acc) {
-		if(node != null) {
-			this.keysLoop(node.left,acc);
-			acc.push(node.key);
-			this.keysLoop(node.right,acc);
-		}
-	}
-	merge(t1,t2) {
-		if(t1 == null) {
-			return t2;
-		}
-		if(t2 == null) {
-			return t1;
-		}
-		var t = this.minBinding(t2);
-		return this.balance(t1,t.key,t.value,this.removeMinBinding(t2));
-	}
-	minBinding(t) {
-		if(t == null) {
-			throw new js__$Boot_HaxeError("Not_found");
-		} else if(t.left == null) {
-			return t;
-		} else {
-			return this.minBinding(t.left);
-		}
-	}
-	removeMinBinding(t) {
-		if(t.left == null) {
-			return t.right;
-		} else {
-			return this.balance(this.removeMinBinding(t.left),t.key,t.value,t.right);
-		}
-	}
-	balance(l,k,v,r) {
-		var hl = l == null ? 0 : l._height;
-		var hr = r == null ? 0 : r._height;
-		if(hl > hr + 2) {
-			var _this = l.left;
-			var _this1 = l.right;
-			if((_this == null ? 0 : _this._height) >= (_this1 == null ? 0 : _this1._height)) {
-				return new haxe_ds_TreeNode(l.left,l.key,l.value,new haxe_ds_TreeNode(l.right,k,v,r));
-			} else {
-				return new haxe_ds_TreeNode(new haxe_ds_TreeNode(l.left,l.key,l.value,l.right.left),l.right.key,l.right.value,new haxe_ds_TreeNode(l.right.right,k,v,r));
-			}
-		} else if(hr > hl + 2) {
-			var _this2 = r.right;
-			var _this3 = r.left;
-			if((_this2 == null ? 0 : _this2._height) > (_this3 == null ? 0 : _this3._height)) {
-				return new haxe_ds_TreeNode(new haxe_ds_TreeNode(l,k,v,r.left),r.key,r.value,r.right);
-			} else {
-				return new haxe_ds_TreeNode(new haxe_ds_TreeNode(l,k,v,r.left.left),r.left.key,r.left.value,new haxe_ds_TreeNode(r.left.right,r.key,r.value,r.right));
-			}
-		} else {
-			return new haxe_ds_TreeNode(l,k,v,r,(hl > hr ? hl : hr) + 1);
-		}
-	}
-	compare(k1,k2) {
-		return Reflect.compare(k1,k2);
-	}
-	toString() {
-		if(this.root == null) {
-			return "{}";
-		} else {
-			return "{" + this.root.toString() + "}";
-		}
-	}
-	clear() {
-		this.root = null;
-	}
-}
-$hxClasses["haxe.ds.BalancedTree"] = haxe_ds_BalancedTree;
-haxe_ds_BalancedTree.__name__ = "haxe.ds.BalancedTree";
-haxe_ds_BalancedTree.__interfaces__ = [haxe_IMap];
-Object.assign(haxe_ds_BalancedTree.prototype, {
-	__class__: haxe_ds_BalancedTree
-	,root: null
-});
-class haxe_ds_TreeNode {
-	constructor(l,k,v,r,h) {
-		if(h == null) {
-			h = -1;
-		}
-		this.left = l;
-		this.key = k;
-		this.value = v;
-		this.right = r;
-		if(h == -1) {
-			var tmp;
-			var _this = this.left;
-			var _this1 = this.right;
-			if((_this == null ? 0 : _this._height) > (_this1 == null ? 0 : _this1._height)) {
-				var _this2 = this.left;
-				tmp = _this2 == null ? 0 : _this2._height;
-			} else {
-				var _this3 = this.right;
-				tmp = _this3 == null ? 0 : _this3._height;
-			}
-			this._height = tmp + 1;
-		} else {
-			this._height = h;
-		}
-	}
-	toString() {
-		return (this.left == null ? "" : this.left.toString() + ", ") + ("" + Std.string(this.key) + "=" + Std.string(this.value)) + (this.right == null ? "" : ", " + this.right.toString());
-	}
-}
-$hxClasses["haxe.ds.TreeNode"] = haxe_ds_TreeNode;
-haxe_ds_TreeNode.__name__ = "haxe.ds.TreeNode";
-Object.assign(haxe_ds_TreeNode.prototype, {
-	__class__: haxe_ds_TreeNode
-	,left: null
-	,right: null
-	,key: null
-	,value: null
-	,_height: null
-});
-class haxe_ds_EnumValueMap extends haxe_ds_BalancedTree {
-	constructor() {
-		super();
-	}
-	compare(k1,k2) {
-		var d = k1._hx_index - k2._hx_index;
-		if(d != 0) {
-			return d;
-		}
-		var p1 = Type.enumParameters(k1);
-		var p2 = Type.enumParameters(k2);
-		if(p1.length == 0 && p2.length == 0) {
-			return 0;
-		}
-		return this.compareArgs(p1,p2);
-	}
-	compareArgs(a1,a2) {
-		var ld = a1.length - a2.length;
-		if(ld != 0) {
-			return ld;
-		}
-		var _g = 0;
-		var _g1 = a1.length;
-		while(_g < _g1) {
-			var i = _g++;
-			var d = this.compareArg(a1[i],a2[i]);
-			if(d != 0) {
-				return d;
-			}
-		}
-		return 0;
-	}
-	compareArg(v1,v2) {
-		if(Reflect.isEnumValue(v1) && Reflect.isEnumValue(v2)) {
-			return this.compare(v1,v2);
-		} else if(((v1) instanceof Array) && ((v2) instanceof Array)) {
-			return this.compareArgs(v1,v2);
-		} else {
-			return Reflect.compare(v1,v2);
-		}
-	}
-	copy() {
-		var copied = new haxe_ds_EnumValueMap();
-		copied.root = this.root;
-		return copied;
-	}
-}
-$hxClasses["haxe.ds.EnumValueMap"] = haxe_ds_EnumValueMap;
-haxe_ds_EnumValueMap.__name__ = "haxe.ds.EnumValueMap";
-haxe_ds_EnumValueMap.__interfaces__ = [haxe_IMap];
-haxe_ds_EnumValueMap.__super__ = haxe_ds_BalancedTree;
-Object.assign(haxe_ds_EnumValueMap.prototype, {
-	__class__: haxe_ds_EnumValueMap
-});
-class haxe_ds__$HashMap_HashMap_$Impl_$ {
-	static _new() {
-		var this1 = new haxe_ds__$HashMap_HashMapData();
-		return this1;
-	}
-	static set(this1,k,v) {
-		var _this = this1.keys;
-		var key = k.hashCode();
-		_this.h[key] = k;
-		var _this1 = this1.values;
-		var key1 = k.hashCode();
-		_this1.h[key1] = v;
-	}
-	static get(this1,k) {
-		var _this = this1.values;
-		var key = k.hashCode();
-		return _this.h[key];
-	}
-	static exists(this1,k) {
-		var _this = this1.values;
-		var key = k.hashCode();
-		return _this.h.hasOwnProperty(key);
-	}
-	static remove(this1,k) {
-		this1.values.remove(k.hashCode());
-		return this1.keys.remove(k.hashCode());
-	}
-	static keys(this1) {
-		return this1.keys.iterator();
-	}
-	static copy(this1) {
-		var copied = new haxe_ds__$HashMap_HashMapData();
-		copied.keys = this1.keys.copy();
-		copied.values = this1.values.copy();
-		return copied;
-	}
-	static iterator(this1) {
-		return this1.values.iterator();
-	}
-	static clear(this1) {
-		this1.keys.h = { };
-		this1.values.h = { };
-	}
-}
-$hxClasses["haxe.ds._HashMap.HashMap_Impl_"] = haxe_ds__$HashMap_HashMap_$Impl_$;
-haxe_ds__$HashMap_HashMap_$Impl_$.__name__ = "haxe.ds._HashMap.HashMap_Impl_";
-class haxe_ds__$HashMap_HashMapData {
-	constructor() {
-		this.keys = new haxe_ds_IntMap();
-		this.values = new haxe_ds_IntMap();
-	}
-}
-$hxClasses["haxe.ds._HashMap.HashMapData"] = haxe_ds__$HashMap_HashMapData;
-haxe_ds__$HashMap_HashMapData.__name__ = "haxe.ds._HashMap.HashMapData";
-Object.assign(haxe_ds__$HashMap_HashMapData.prototype, {
-	__class__: haxe_ds__$HashMap_HashMapData
-	,keys: null
-	,values: null
-});
 class haxe_ds_IntMap {
 	constructor() {
 		this.h = { };
@@ -1428,156 +1097,6 @@ haxe_ds_IntMap.__name__ = "haxe.ds.IntMap";
 haxe_ds_IntMap.__interfaces__ = [haxe_IMap];
 Object.assign(haxe_ds_IntMap.prototype, {
 	__class__: haxe_ds_IntMap
-	,h: null
-});
-class haxe_ds__$Map_Map_$Impl_$ {
-	static set(this1,key,value) {
-		this1.set(key,value);
-	}
-	static get(this1,key) {
-		return this1.get(key);
-	}
-	static exists(this1,key) {
-		return this1.exists(key);
-	}
-	static remove(this1,key) {
-		return this1.remove(key);
-	}
-	static keys(this1) {
-		return this1.keys();
-	}
-	static iterator(this1) {
-		return this1.iterator();
-	}
-	static keyValueIterator(this1) {
-		return this1.keyValueIterator();
-	}
-	static copy(this1) {
-		return this1.copy();
-	}
-	static toString(this1) {
-		return this1.toString();
-	}
-	static clear(this1) {
-		this1.clear();
-	}
-	static arrayWrite(this1,k,v) {
-		this1.set(k,v);
-		return v;
-	}
-	static toStringMap(t) {
-		return new haxe_ds_StringMap();
-	}
-	static toIntMap(t) {
-		return new haxe_ds_IntMap();
-	}
-	static toEnumValueMapMap(t) {
-		return new haxe_ds_EnumValueMap();
-	}
-	static toObjectMap(t) {
-		return new haxe_ds_ObjectMap();
-	}
-	static fromStringMap(map) {
-		return map;
-	}
-	static fromIntMap(map) {
-		return map;
-	}
-	static fromObjectMap(map) {
-		return map;
-	}
-}
-$hxClasses["haxe.ds._Map.Map_Impl_"] = haxe_ds__$Map_Map_$Impl_$;
-haxe_ds__$Map_Map_$Impl_$.__name__ = "haxe.ds._Map.Map_Impl_";
-class haxe_ds_ObjectMap {
-	constructor() {
-		this.h = { __keys__ : { }};
-	}
-	set(key,value) {
-		var id = key.__id__;
-		if(id == null) {
-			id = (key.__id__ = $global.$haxeUID++);
-		}
-		this.h[id] = value;
-		this.h.__keys__[id] = key;
-	}
-	get(key) {
-		return this.h[key.__id__];
-	}
-	exists(key) {
-		return this.h.__keys__[key.__id__] != null;
-	}
-	remove(key) {
-		var id = key.__id__;
-		if(this.h.__keys__[id] == null) {
-			return false;
-		}
-		delete(this.h[id]);
-		delete(this.h.__keys__[id]);
-		return true;
-	}
-	keys() {
-		var a = [];
-		for( var key in this.h.__keys__ ) {
-		if(this.h.hasOwnProperty(key)) {
-			a.push(this.h.__keys__[key]);
-		}
-		}
-		return HxOverrides.iter(a);
-	}
-	iterator() {
-		return { ref : this.h, it : this.keys(), hasNext : function() {
-			return this.it.hasNext();
-		}, next : function() {
-			var i = this.it.next();
-			return this.ref[i.__id__];
-		}};
-	}
-	keyValueIterator() {
-		return new haxe_iterators_MapKeyValueIterator(this);
-	}
-	copy() {
-		var copied = new haxe_ds_ObjectMap();
-		var key = this.keys();
-		while(key.hasNext()) {
-			var key1 = key.next();
-			copied.set(key1,this.h[key1.__id__]);
-		}
-		return copied;
-	}
-	toString() {
-		var s_b = "";
-		s_b += "{";
-		var it = this.keys();
-		var i = it;
-		while(i.hasNext()) {
-			var i1 = i.next();
-			s_b += Std.string(Std.string(i1));
-			s_b += " => ";
-			s_b += Std.string(Std.string(this.h[i1.__id__]));
-			if(it.hasNext()) {
-				s_b += ", ";
-			}
-		}
-		s_b += "}";
-		return s_b;
-	}
-	clear() {
-		this.h = { __keys__ : { }};
-	}
-	static assignId(obj) {
-		return (obj.__id__ = $global.$haxeUID++);
-	}
-	static getId(obj) {
-		return obj.__id__;
-	}
-}
-haxe_ds_ObjectMap.count = null;
-$hxClasses["haxe.ds.ObjectMap"] = haxe_ds_ObjectMap;
-haxe_ds_ObjectMap.__name__ = "haxe.ds.ObjectMap";
-haxe_ds_ObjectMap.__interfaces__ = [haxe_IMap];
-Object.assign(haxe_ds_ObjectMap.prototype, {
-	__class__: haxe_ds_ObjectMap
 	,h: null
 });
 class haxe_ds__$ReadOnlyArray_ReadOnlyArray_$Impl_$ {
@@ -1751,45 +1270,6 @@ Object.assign(haxe_ds_StringMap.prototype, {
 	__class__: haxe_ds_StringMap
 	,h: null
 	,rh: null
-});
-class haxe_ds_WeakMap {
-	constructor() {
-		throw new js__$Boot_HaxeError("Not implemented for this platform");
-	}
-	set(key,value) {
-	}
-	get(key) {
-		return null;
-	}
-	exists(key) {
-		return false;
-	}
-	remove(key) {
-		return false;
-	}
-	keys() {
-		return null;
-	}
-	iterator() {
-		return null;
-	}
-	keyValueIterator() {
-		return null;
-	}
-	copy() {
-		return null;
-	}
-	toString() {
-		return null;
-	}
-	clear() {
-	}
-}
-$hxClasses["haxe.ds.WeakMap"] = haxe_ds_WeakMap;
-haxe_ds_WeakMap.__name__ = "haxe.ds.WeakMap";
-haxe_ds_WeakMap.__interfaces__ = [haxe_IMap];
-Object.assign(haxe_ds_WeakMap.prototype, {
-	__class__: haxe_ds_WeakMap
 });
 class haxe_iterators_DynamicAccessIterator {
 	constructor(access) {
@@ -2220,6 +1700,14 @@ class vantreeseba_rulesEngine_Blackboard {
 			_this.h[key] = value;
 		}
 	}
+	get(key) {
+		var _this = this.facts;
+		if(__map_reserved[key] != null) {
+			return _this.getReserved(key);
+		} else {
+			return _this.h[key];
+		}
+	}
 }
 $hxClasses["vantreeseba.rulesEngine.Blackboard"] = $hx_exports["vantreeseba"]["rulesEngine"]["Blackboard"] = vantreeseba_rulesEngine_Blackboard;
 vantreeseba_rulesEngine_Blackboard.__name__ = "vantreeseba.rulesEngine.Blackboard";
@@ -2234,8 +1722,8 @@ class vantreeseba_rulesEngine_Condition {
 		this.fact = "";
 	}
 	matches(bb) {
-		var key = this.fact;
 		var _this = bb.facts;
+		var key = this.fact;
 		var val = __map_reserved[key] != null ? _this.getReserved(key) : _this.h[key];
 		switch(this.op._hx_index) {
 		case 0:
@@ -2285,6 +1773,8 @@ class vantreeseba_rulesEngine_Engine {
 		this.rules = [];
 	}
 	run() {
+	}
+	DOOOBITY() {
 	}
 }
 $hxClasses["vantreeseba.rulesEngine.Engine"] = $hx_exports["vantreeseba"]["rulesEngine"]["Engine"] = vantreeseba_rulesEngine_Engine;
@@ -2409,7 +1899,6 @@ var Float = Number;
 var Bool = Boolean;
 var Class = { };
 var Enum = { };
-haxe_ds_ObjectMap.count = 0;
 var __map_reserved = {};
 Object.defineProperty(js__$Boot_HaxeError.prototype,"message",{ get : function() {
 	return String(this.val);

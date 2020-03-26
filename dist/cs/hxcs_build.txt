@@ -1,4 +1,4 @@
-/home/vantreeseba/code/vantreeseba/haxe/gamedev/rulesEngine
+/home/vantreeseba/windows/code/unity_projects/rulesEngine
 begin defines
 NET_20
 cs
@@ -120,11 +120,6 @@ M cs.system.Predicate_1
 M System.Reflection.MethodBase
 M System.IEquatable`1
 M System.IConvertible
-M haxe.ds.BalancedTree
-C haxe.ds.BalancedTree
-C haxe.ds.BalancedTree
-C haxe.ds.TreeNode
-C haxe.ds.TreeNode
 M System.MissingMemberException
 M cs.Ref
 M System.Reflection.ConstructorInfo
@@ -210,10 +205,6 @@ C haxe.root.ValueType_TUnknown
 C haxe.root.Type
 M System.AssemblyLoadEventArgs
 M System.Globalization.DateTimeFormatInfo
-M haxe.ds.HashMap
-C haxe.ds._HashMap.HashMap_Impl_
-C haxe.ds._HashMap.HashMapData
-C haxe.ds._HashMap.HashMapData
 M haxe.SysTools
 C haxe.SysTools
 M cs.system.reflection.MethodAttributes
@@ -259,7 +250,6 @@ M cs.system.reflection.Binder
 M System.Reflection.ExceptionHandlingClause
 M cs.types.Char16
 M System.Security.AccessControl.AuditRule
-M Map
 M System.Collections.Generic.IList`1
 M System.Runtime.ConstrainedExecution.CriticalFinalizerObject
 M cs.system.security.principal.PrincipalPolicy
@@ -317,13 +307,6 @@ M System.Runtime.InteropServices._PropertyBuilder
 M cs.system.reflection.MethodImplAttributes
 M System.Threading.Thread
 M System.Text.RegularExpressions.RegexRunnerFactory
-M haxe.ds.ObjectMap
-C haxe.ds.ObjectMap
-C haxe.ds.ObjectMap
-C haxe.ds._ObjectMap.ObjectMapKeyIterator
-C haxe.ds._ObjectMap.ObjectMapKeyIterator
-C haxe.ds._ObjectMap.ObjectMapValueIterator
-C haxe.ds._ObjectMap.ObjectMapValueIterator
 M System.Runtime.InteropServices._FieldInfo
 M cs.system.text.regularexpressions.RegexOptions
 M System.Collections.IEnumerator
@@ -366,9 +349,6 @@ M cs.types.UInt16
 M System.Security.Principal.IPrincipal
 M System.Runtime.InteropServices._Type
 M cs.system.io.FileMode
-M haxe.ds.WeakMap
-C haxe.ds.WeakMap
-C haxe.ds.WeakMap
 M System.Runtime.InteropServices._ParameterBuilder
 M System.Runtime.InteropServices._ParameterInfo
 M cs.system.EventHandler
@@ -485,8 +465,6 @@ C haxe.lang.FieldLookup
 M System.Object
 M System.Runtime.Serialization.SerializationInfoEnumerator
 M System.RuntimeTypeHandle
-M haxe.ds.Map
-C haxe.ds._Map.Map_Impl_
 M cs.system.reflection.MemberFilter
 M System.Reflection.MethodBody
 M System.Random
@@ -528,9 +506,6 @@ M Enum
 M System.IntPtr
 M System.Runtime.Remoting.IRemotingTypeInfo
 M System.Runtime.Remoting.Messaging.IMessageCtrl
-M haxe.ds.EnumValueMap
-C haxe.ds.EnumValueMap
-C haxe.ds.EnumValueMap
 M haxe.Int64Helper
 C haxe.Int64Helper
 M System.Reflection.Emit.LocalBuilder
