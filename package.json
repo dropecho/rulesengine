@@ -1,37 +1,24 @@
 {
-  "name": "simple_rules_engine",
-  "displayName": "Rules Engine",
-  "version": "0.0.1",
-  "description": "A basic rules engine for game dev.",
-  "main": "index.js",
-  "directories": {
-    "test": "test"
+  "name": "@dropecho/rulesengine",
+  "version": "0.1.8",
+  "description": "An example haxelib that outputs to multiple targets.",
+  "author": "vantreeseba <vantreeseba@gmail.com>",
+  "repository": "github:dropecho/rulesengine",
+  "main": "dist/js/rulesengine.js",
+  "files": [
+    "dist/js/rulesengine.js"
+  ],
+  "publishConfig": {
+    "access": "public"
   },
+  "license": "MIT",
   "scripts": {
-    "test": "haxelib run munit t -coverage",
-    "watch": "npm-watch test",
-    "build": "haxe build.hxml && npm run cs:packagejson",
-    "cs:packagejson": "cp package.upm.json dist/cs/package.json",
-    "subtree:js": "npm run subtree:js:gitignore && npm run subtree:js:packagejson && git subtree split -P dist/js -b NPM",
-    "subtree:js:gitignore": "cp .gitignore dist/js",
-    "subtree:js:packagejson": "cp package.npm.json dist/js/package.json"
-  },
-  "watch": {
-    "test": {
-      "patterns": [
-        "test",
-        "src"
-      ],
-      "extensions": "hx",
-      "ignore":  [
-        "test/TestMain.hx",
-        "test/TestSuite.hx"
-      ]
-    }
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "npm-watch": "^0.6.0"
+    "test": "haxelib run munit t",
+    "build": "haxe build.hxml",
+    "build-changelog": "conventional-changelog -i CHANGELOG.md -s -r 0",
+    "bump": "npm version --no-git-tag-version",
+    "haxe:submit": "haxelib run submit",
+    "version": "npm run build-changelog",
+    "postversion": "git add . && git commit -m 'version' && npm run haxe:submit && npm publish"
   }
 }

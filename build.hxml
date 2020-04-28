@@ -8,20 +8,20 @@
 --macro include('', true, null, ['src'])
 
 # OUTPUT 
--js dist/js/index.js 
+-js dist/js/rulesengine.js 
 
---next
 
 ## C#
--cp src
--D dce=no
--D dll_import
--D no-root
--D dll
-
-# DEFINES / MACROS
-# --macro addGlobalMetadata('*', '@:nativeGen')
---macro include('', true, null, ['src'])
-
-# OUTPUT 
--cs dist/cs/rules_engine
+# --next
+# -cp src
+# -D dce=no
+# -D dll_import
+# -D no-root
+# -D dll
+#
+# # DEFINES / MACROS
+# # --macro addGlobalMetadata('*', '@:nativeGen')
+# --macro include('', true, null, ['src'])
+#
+# # OUTPUT
+# -cs dist/cs/rules_engine
