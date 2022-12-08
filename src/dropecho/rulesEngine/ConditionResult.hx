@@ -9,6 +9,6 @@ class ConditionResult {
 	public function new(con:Condition, res:Bool) {
 		condition = con;
 		matches = res;
-		reason = con.fact + " should be " + con.op + " " + con.value;
+		reason = con.reason();
 	}
 }

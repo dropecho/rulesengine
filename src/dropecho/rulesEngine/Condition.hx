@@ -2,31 +2,47 @@ package dropecho.rulesEngine;
 
 @:expose
 class Condition {
-	public var fact:String = "";
-	public var op:Operator = Operator.EQ;
-	public var value:Dynamic = null;
+	var _fact:String = "";
+	var _op:Operator = Operator.EQ;
+	var _value:Dynamic = null;
 
-	public function new() {}
+	public function new(fact:String, op:Operator, value:Dynamic) {
+		this._fact = fact;
+		this._op = op;
+		this._value = value;
+	}
 
 	public function matches(bb:Blackboard):Bool {
-		var val = bb.facts.get(fact);
+		var val:Dynamic = bb.get(_fact);
 
-		switch (op) {
+		switch (_op) {
 			case GT:
-				return val > value;
+				return val > _value;
 			case GTE:
-				return val >= value;
+				return val >= _value;
 			case LT:
-				return val < value;
+				return val < _value;
 			case LTE:
-				return val <= value;
+				return val <= _value;
 			case EQ:
-				return val == value;
+				#if js
+				return js.Syntax.strictEq(val, _value);
+				#else
+				return val == _value;
+				#end
 			case NEQ:
-				return val != value;
+				#if js
+				return js.Syntax.strictNeq(val, _value);
+				#else
+				return val != _value;
+				#end
 			default:
 				return false;
 		}
+	}
+
+	public function reason():String {
+		return _fact + " should be " + _op + " " + _value;
 	}
 
 	public function result(bb:Blackboard):ConditionResult {

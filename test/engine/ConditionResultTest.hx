@@ -12,17 +12,14 @@ class ConditionResultTest {
 	@BeforeClass
 	public function suiteSetup() {
 		blackboard = new Blackboard();
-		blackboard.facts.set("test_int", 1);
-		blackboard.facts.set("test_bool", true);
-		blackboard.facts.set("test_string", "fact");
+		blackboard.set("test_int", 1);
+		blackboard.set("test_bool", true);
+		blackboard.set("test_string", "fact");
 	}
 
 	@Before
 	public function setup() {
-		int_condition = new Condition();
-		int_condition.fact = "test_int";
-		int_condition.op = Operator.EQ;
-		int_condition.value = 1;
+		int_condition = new Condition("test_int", Operator.EQ, 1);
 	}
 
 	@Test
@@ -33,13 +30,12 @@ class ConditionResultTest {
 	@Test
 	public function match_int_eq() {
 		var result = int_condition.result(blackboard);
-
 		Assert.isTrue(result.matches);
 	}
 
 	@Test
 	public function match_int_eq_fail() {
-		int_condition.value = 2;
+		int_condition = new Condition("test_int", Operator.EQ, 2);
 		var result = int_condition.result(blackboard);
 
 		Assert.isFalse(result.matches);

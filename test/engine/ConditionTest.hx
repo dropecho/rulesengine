@@ -4,35 +4,24 @@ import massive.munit.Assert;
 import dropecho.rulesEngine.*;
 
 class ConditionTest {
-	public var int_condition:Condition;
-	public var string_condition:Condition;
-	public var bool_condition:Condition;
-	public var blackboard:Blackboard;
+	var int_condition:Condition;
+	var string_condition:Condition;
+	var bool_condition:Condition;
+	var blackboard:Blackboard;
 
 	@BeforeClass
 	public function suiteSetup() {
 		blackboard = new Blackboard();
-		blackboard.facts.set("test_int", 1);
-		blackboard.facts.set("test_bool", true);
-		blackboard.facts.set("test_string", "fact");
+		blackboard.set("test_int", 1);
+		blackboard.set("test_bool", true);
+		blackboard.set("test_string", "fact");
 	}
 
 	@Before
 	public function setup() {
-		int_condition = new Condition();
-		int_condition.fact = "test_int";
-		int_condition.op = Operator.EQ;
-		int_condition.value = 1;
-
-		bool_condition = new Condition();
-		bool_condition.fact = "test_bool";
-		bool_condition.op = Operator.EQ;
-		bool_condition.value = true;
-
-		string_condition = new Condition();
-		string_condition.fact = "test_string";
-		string_condition.op = Operator.EQ;
-		string_condition.value = "fact";
+		int_condition = new Condition("test_int", Operator.EQ, 1);
+		bool_condition = new Condition("test_bool", Operator.EQ, true);
+		string_condition = new Condition("test_string", Operator.EQ, "fact");
 	}
 
 	@Test
@@ -50,55 +39,49 @@ class ConditionTest {
 
 	@Test
 	public function match_int_neq() {
-		int_condition.op = Operator.NEQ;
-		int_condition.value = 2;
+		int_condition = new Condition("test_int", Operator.NEQ, 2);
 		var matches = int_condition.matches(blackboard);
 		Assert.isTrue(matches);
 	}
 
 	@Test
 	public function match_int_gt() {
-		int_condition.op = Operator.GT;
-		int_condition.value = 0;
+		int_condition = new Condition("test_int", Operator.GT, 0);
 		var matches = int_condition.matches(blackboard);
 		Assert.isTrue(matches);
 	}
 
 	@Test
 	public function match_int_gte() {
-		int_condition.op = Operator.GTE;
+		int_condition = new Condition("test_int", Operator.GTE, 1);
 		var matches = int_condition.matches(blackboard);
 		Assert.isTrue(matches);
 	}
 
 	@Test
 	public function match_int_lt() {
-		int_condition.op = Operator.LT;
-		int_condition.value = 2;
+		int_condition = new Condition("test_int", Operator.LT, 2);
 		var matches = int_condition.matches(blackboard);
 		Assert.isTrue(matches);
 	}
 
 	@Test
 	public function match_int_lte() {
-		int_condition.op = Operator.LTE;
-		int_condition.value = 1;
+		int_condition = new Condition("test_int", Operator.LTE, 1);
 		var matches = int_condition.matches(blackboard);
 		Assert.isTrue(matches);
 	}
 
 	@Test
 	public function match_int_fail() {
-		int_condition.value = 2;
-
+		int_condition = new Condition("test_int", Operator.EQ, 2);
 		var matches = int_condition.matches(blackboard);
 		Assert.isFalse(matches);
 	}
 
 	@Test
 	public function match_int_against_string_condition_value() {
-		int_condition.value = "1";
-
+		int_condition = new Condition("test_int", Operator.EQ, "1");
 		var matches = int_condition.matches(blackboard);
 		Assert.isFalse(matches);
 	}
@@ -111,14 +94,14 @@ class ConditionTest {
 
 	@Test
 	public function match_bool_gte() {
-		bool_condition.op = Operator.GTE;
+		bool_condition = new Condition("test_bool", Operator.GTE, true);
 		var matches = bool_condition.matches(blackboard);
 		Assert.isTrue(matches);
 	}
 
 	@Test
 	public function match_bool_gt() {
-		bool_condition.op = Operator.GT;
+		bool_condition = new Condition("test_bool", Operator.GT, true);
 		var matches = bool_condition.matches(blackboard);
 		Assert.isFalse(matches);
 	}
@@ -131,15 +114,14 @@ class ConditionTest {
 
 	@Test
 	public function match_string_gt() {
-		string_condition.op = Operator.GT;
-		string_condition.value = "f";
+		string_condition = new Condition("test_string", Operator.GT, "f");
 		var matches = string_condition.matches(blackboard);
 		Assert.isTrue(matches);
 	}
 
 	@Test
 	public function match_string_gte() {
-		string_condition.op = Operator.GTE;
+		string_condition = new Condition("test_string", Operator.GTE, "fact");
 		var matches = string_condition.matches(blackboard);
 		Assert.isTrue(matches);
 	}

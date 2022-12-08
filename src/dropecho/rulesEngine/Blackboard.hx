@@ -1,20 +1,21 @@
 package dropecho.rulesEngine;
 
-import haxe.ds.StringMap;
+import dropecho.interop.AbstractMap;
 
 @:expose
-class Blackboard {
-	public var facts:StringMap<Dynamic>;
-
-	public function new() {
-		facts = new StringMap<Dynamic>();
-	}
-
-	public function set(key:String, val:Dynamic) {
-		facts.set(key, val);
-	}
-
-	public function get(key:String):Dynamic {
-		return facts.get(key);
-	}
-}
+typedef Blackboard = AbstractMap<String, Dynamic>;
+// class Blackboard {
+//   var _facts:StringMap<Dynamic>;
+//
+//   public function new() {
+//     _facts = new StringMap<Dynamic>();
+//   }
+//
+//   public function set(key:String, val:Dynamic) {
+//     _facts.set(key, val);
+//   }
+//
+//   public function get(key:String):Dynamic {
+//     return _facts.get(key);
+//   }
+// }

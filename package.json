@@ -1,17 +1,24 @@
 {
   "name": "@dropecho/rulesengine",
   "version": "0.1.8",
-  "description": "An example haxelib that outputs to multiple targets.",
+  "description": "",
   "author": "vantreeseba <vantreeseba@gmail.com>",
   "repository": "github:dropecho/rulesengine",
-  "main": "dist/js/rulesengine.js",
-  "files": [
-    "dist/js/rulesengine.js"
-  ],
   "publishConfig": {
     "access": "public"
   },
   "license": "MIT",
+  "type": "module",
+  "files": [
+    "dist/js/**/*"
+  ],
+  "main": "./dist/js/cjs/index.cjs",
+  "exports": {
+    ".": {
+      "require": "./dist/js/cjs/index.cjs",
+      "import": "./dist/js/esm/index.js"
+    }
+  },
   "scripts": {
     "test": "haxelib run munit t",
     "build": "haxe build.hxml",

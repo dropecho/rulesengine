@@ -1,27 +1,21 @@
-## JS
+# CODE PATH
 -cp src
-# -D dce=full
--D dce=no
--D js-es=6
-
-# DEFINES / MACROS
 --macro include('', true, null, ['src'])
 
-# OUTPUT 
--js dist/js/rulesengine.js 
-
-
-## C#
-# --next
-# -cp src
+-D analyzer-optimize
 # -D dce=no
-# -D dll_import
-# -D no-root
-# -D dll
-#
-# # DEFINES / MACROS
-# # --macro addGlobalMetadata('*', '@:nativeGen')
-# --macro include('', true, null, ['src'])
-#
-# # OUTPUT
-# -cs dist/cs/rules_engine
+
+# PUT LIBS HERE.
+# -lib seedyrng
+-lib dropecho.interop;
+
+# Include above for all targets.
+--each
+
+targets/js.hxml
+--next
+targets/js-esm.hxml
+--next
+targets/cs.hxml
+--next
+targets/docs.hxml

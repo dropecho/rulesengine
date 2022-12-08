@@ -1,22 +1,37 @@
-## Neko
--main TestMain
-
+# ## Neko
 -lib munit
 -lib hamcrest
 -lib mcover
+-lib dropecho.interop;
 
 -cp src
 -cp test
 
+-main TestMain
 -neko build/neko_test.n
 
-# ## JavaScript NodeJS
-# --next
-# -main TestMain
-# -lib munit
-# -lib hamcrest
-# -lib hxnodejs
-# -cp src
+## JavaScript NodeJS
+--next
+-lib hxnodejs
+-lib dropecho.interop
 
-# -cp test
-# -js build/js_test.js
+-lib munit
+-lib hamcrest
+-lib mcover
+-cp src
+-cp test
+
+-main TestMain
+-js build/js_test.cjs
+
+## C# 
+--next
+-lib dropecho.interop
+
+-lib munit
+-lib hamcrest
+-lib mcover
+-cp src
+-cp test
+-main TestMain
+-cs build/cs_test

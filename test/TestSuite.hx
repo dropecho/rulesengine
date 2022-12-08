@@ -5,6 +5,7 @@ import engine.ConditionResultTest;
 import engine.EngineTest;
 import engine.RuleResultTest;
 import engine.ConditionTest;
+import ExampleTest;
 
 /**
  * Auto generated Test Suite for MassiveUnit.
@@ -21,5 +22,6 @@ class TestSuite extends massive.munit.TestSuite
 		add(engine.EngineTest);
 		add(engine.RuleResultTest);
 		add(engine.ConditionTest);
+		add(ExampleTest);
 	}
 }
