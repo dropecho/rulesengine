@@ -1,7 +1,7 @@
 package engine;
 
 import massive.munit.Assert;
-import vantreeseba.rulesEngine.*;
+import dropecho.rulesEngine.*;
 
 class EngineTest {
 	@Test
@@ -9,11 +9,11 @@ class EngineTest {
 		var engine = new Engine();
 		Assert.isNotNull(engine);
 	}
-	// @Test
-	// public function testtest()
-	// {
-	// var engine = new Engine();
-	// var foo = engine.test(3);
-	// Assert.areEqual(foo, 7);
-	// }
+
+	@Test
+	public function testtest() {
+		var engine = new Engine();
+//     var foo = engine.test(3);
+		Assert.areEqual(foo, 7);
+	}
 }

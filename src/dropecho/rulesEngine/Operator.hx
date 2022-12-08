@@ -1,4 +1,4 @@
-package vantreeseba.rulesEngine;
+package dropecho.rulesEngine;
 
 enum Operator {
 	GT;
@@ -8,4 +8,3 @@ enum Operator {
 	EQ;
 	NEQ;
 }
-

@@ -1,7 +1,7 @@
 package engine;
 
 import massive.munit.Assert;
-import vantreeseba.rulesEngine.*;
+import dropecho.rulesEngine.*;
 
 class RuleTest {
 	public var rule:Rule;

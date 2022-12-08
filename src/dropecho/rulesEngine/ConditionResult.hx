@@ -1,4 +1,4 @@
-package vantreeseba.rulesEngine;
+package dropecho.rulesEngine;
 
 @:expose
 class ConditionResult {
@@ -12,4 +12,3 @@ class ConditionResult {
 		reason = con.fact + " should be " + con.op + " " + con.value;
 	}
 }
-

@@ -1,4 +1,4 @@
-package vantreeseba.rulesEngine;
+package dropecho.rulesEngine;
 
 @expose
 class RuleResult {
@@ -25,5 +25,3 @@ class RuleResult {
 		return get_reason();
 	}
 }
-
-

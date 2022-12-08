@@ -1,4 +1,4 @@
-package vantreeseba.rulesEngine;
+package dropecho.rulesEngine;
 
 import haxe.ds.StringMap;
 
@@ -14,7 +14,7 @@ class Blackboard {
 		facts.set(key, val);
 	}
 
-	public function get(key:String) : Dynamic {
+	public function get(key:String):Dynamic {
 		return facts.get(key);
 	}
 }
